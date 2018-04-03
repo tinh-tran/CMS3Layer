@@ -39,7 +39,7 @@ namespace MyCms.Modules.Pages
                 HttpCookie cookie_Admin = new HttpCookie("Admin", list[0].Admin.ToString());
                 cookie_Admin.Expires = DateTime.Now.AddHours(4);
                 Response.Cookies.Add(cookie_Admin);
-                ltrError.Text = "Đăng nhập thành công!";
+                Response.Redirect("/user");
             }
             else
             {

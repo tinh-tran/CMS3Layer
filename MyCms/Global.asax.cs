@@ -13,7 +13,9 @@ namespace MyCms
     {
         void RegisterRoutes(RouteCollection routes)
         {
+            //admin
             RouteTable.Routes.MapPageRoute("Login", "login", "~/Modules/Pages/Login.aspx");
+            RouteTable.Routes.MapPageRoute("User", "user", "~/Admins/Users.aspx");
         }
         void Application_Start(object sender, EventArgs e)
         {
