@@ -46,7 +46,28 @@ namespace MyCms.Admins
 
         protected void grdUser_ItemDataBound(object sender, DataGridItemEventArgs e)
         {
-
+            ListItemType itemType = e.Item.ItemType;
+            if ((itemType == ListItemType.Footer) && (itemType != ListItemType.Separator))// liệt kê từ đầu tới cuối 
+            {
+                object checkBox = e.Item.FindControl("chkSelectAll");
+                if(checkBox != null)
+                {
+                    //dùng atriibutes để dùng mouse event thực thi lệnh repeat
+                    ((CheckBox)checkBox).Attributes.Add("onclick", "Javascript:chkSelectAll_OnClick(this)");
+                }
+            }
+            else
+            {
+                string tableRowId = grdUser.ClientID + "_row" + e.Item.ItemIndex.ToString();
+                e.Item.Attributes.Add("id", tableRowId);
+                object checkBox = e.Item.FindControl("chkSelect");
+                if(checkBox != null)
+                {
+                    e.Item.Attributes.Add("onMouseMove", "Javascript:chkSelect_OnMouseMove(this)");
+                    e.Item.Attributes.Add("onMouseOut", "Javascript:chkSelect_OnMouseOut(this," + e.Item.ItemIndex.ToString() + ")");
+                    ((CheckBox)checkBox).Attributes.Add("onClick", "Javascript:chkSelect_OnClick(this," + e.Item.ItemIndex.ToString() + ")");
+                }
+            }
         }
         public string ShowAdmin(string str)
         {
@@ -95,7 +116,21 @@ namespace MyCms.Admins
 
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            DataGridItem item = default(DataGridItem);
+            for (int i = 0; i < grdUser.Items.Count; i++)
+            {
+                item = grdUser.Items[i];
+                if (item.ItemType == ListItemType.AlternatingItem | item.ItemType == ListItemType.Item)
+                {
+                    if (((CheckBox)item.FindControl("ChkSelect")).Checked)
+                    {
+                        string strId = item.Cells[1].Text;
+                        UserBUS.User_Delete(strId);
+                    }
+                }
+            }
+            grdUser.CurrentPageIndex = 0;
+            BindGrid();
         }
 
         protected void grdUser_ItemCommand(object source, DataGridCommandEventArgs e)
@@ -108,6 +143,8 @@ namespace MyCms.Admins
                 case "Active":
                     break;
                 case "Delete":
+                    UserBUS.User_Delete(strCA);
+                    BindGrid();
                     break;
                 case "Pass":
                     break;

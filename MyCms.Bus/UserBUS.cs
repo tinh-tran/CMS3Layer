@@ -51,5 +51,11 @@ namespace MyCms.Bus
             return db.User_Update(data);
         }
         #endregion
+        #region [User_Delete]
+        public static bool User_Delete(string Id)
+        {
+            return db.User_Delete(Id);
+        }
+        #endregion
     }
 }

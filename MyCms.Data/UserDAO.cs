@@ -72,8 +72,25 @@ namespace MyCms.Data
             System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
             return true;
         }
+
+
+
+
         #endregion
 
+        #region [User_Delete]
+        public bool User_Delete (String Id )
+        {
+            using (SqlCommand dbCmd = new SqlCommand("sp_User_Delete", GetConnection()))
+            {
+                dbCmd.CommandType = CommandType.StoredProcedure;
+                dbCmd.Parameters.Add(new SqlParameter("@Id", Id));
+                dbCmd.ExecuteNonQuery();
+            }
+            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            return true;
+        }
+        #endregion
         #region[User_GetByAll]        /// <summary>
                                        /// Lấy thông tin user
                                        /// </summary>
