@@ -1,4 +1,3 @@
-E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\obj\Debug\MyCms.Data.csprojResolveAssemblyReference.cache
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\obj\Debug\MyCms.Data.csproj.CoreCompileInputs.cache
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\bin\MyCms.Data.dll.config
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\bin\MyCms.Data.dll

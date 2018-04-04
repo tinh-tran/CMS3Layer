@@ -8,10 +8,10 @@
     <asp:Panel ID="pnView" runat="server">
         <a class="btn btn-default" href="javascript:void(0);" onclick="window.history.go(-1);">
             <i class="icon-chevron-left"></i>&nbsp;Trở lại</a>
-        <asp:LinkButton CssClass="btn btn-default" ID="lbtAddT" runat="server" ><i class="icon-plus"></i> Thêm mới</asp:LinkButton>
-        <asp:LinkButton CssClass="btn btn-default" ID="lbtRefreshT" runat="server"><i class="icon-ok"></i>&nbsp; Làm mới</asp:LinkButton>
+        <asp:LinkButton CssClass="btn btn-default" ID="lbtAddT" runat="server" OnClick="AddButton_Click"><i class="icon-plus"></i> Thêm mới</asp:LinkButton>
+        <asp:LinkButton CssClass="btn btn-default" ID="lbtRefreshT" runat="server" OnClick="RefreshButton_Click"><i class="icon-ok"></i>&nbsp; Làm mới</asp:LinkButton>
         <asp:LinkButton title="Xóa" CssClass="btn btn-default" ID="lbtDeleteT" runat="server"
-            ><i class="icon-trash"></i>&nbsp; Xóa</asp:LinkButton>
+            OnClick="DeleteButton_Click"><i class="icon-trash"></i>&nbsp; Xóa</asp:LinkButton>
         <div style='clear: both; height: 10px'>
         </div>
         <div class="row">
@@ -23,7 +23,9 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
-                            <asp:DataGrid  runat="server" Width="100%" CssClass="table table-striped table-bordered table-hover">
+                            <asp:DataGrid ID="grdUser" runat="server" Width="100%" CssClass="table table-striped table-bordered table-hover"
+                                AutoGenerateColumns="False" OnItemDataBound="grdUser_ItemDataBound" OnItemCommand="grdUser_ItemCommand"
+                                OnPageIndexChanged="grdUser_PageIndexChanged">
                                 <HeaderStyle CssClass="trHeader"></HeaderStyle>
                                 <ItemStyle CssClass="trOdd"></ItemStyle>
                                 <AlternatingItemStyle CssClass="trEven"></AlternatingItemStyle>
@@ -43,7 +45,7 @@
                                         <HeaderTemplate>
                                             Tên người dùng</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblName" runat="server" Text=''></asp:Label>
+                                            <asp:Label ID="lblName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Name")%>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Center" />
                                     </asp:TemplateColumn>
@@ -55,7 +57,7 @@
                                         <HeaderTemplate>
                                             Quyền hạn</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lbladmin" runat="server" Text='Admin'></asp:Label>
+                                            <asp:Label ID="lbladmin" runat="server" Text='<%# ShowAdmin(DataBinder.Eval(Container.DataItem, "Admin").ToString())%>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Center" />
                                     </asp:TemplateColumn>
@@ -63,7 +65,7 @@
                                         <HeaderTemplate>
                                             Trạng thái</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblStatus" runat="server" Text='Active>'></asp:Label>
+                                            <asp:Label ID="lblStatus" runat="server" Text=''></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Function" />
                                     </asp:TemplateColumn>
@@ -73,20 +75,20 @@
                                         <ItemTemplate>
                                         
                                         <asp:ImageButton ID="cmdPass" runat="server" AlternateText="Sửa" CommandName="Pass"
-                                                CssClass="Edit" ToolTip="Mật khẩu" ImageUrl="/App_Themes/Admin/images/pass.png" CommandArgument='' />
+                                                CssClass="Edit" ToolTip="Mật khẩu" ImageUrl="/App_Themes/Admin/images/pass.png" CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' />
                                                 
                                                 <asp:ImageButton ID="cmdRole" runat="server" AlternateText="Sửa" CommandName="Role"
-                                                CssClass="Edit" ToolTip="Phân quyền" ImageUrl="/App_Themes/Admin/images/role.png" CommandArgument='' />
+                                                CssClass="Edit" ToolTip="Phân quyền" ImageUrl="/App_Themes/Admin/images/role.png" CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' />
 
                                             <asp:ImageButton ID="cmdEdit" runat="server" AlternateText="Sửa" CommandName="Edit"
-                                                CssClass="Edit" ToolTip="Sửa" ImageUrl="/App_Themes/Admin/images/edit.png" CommandArgument='' />
+                                                CssClass="Edit" ToolTip="Sửa" ImageUrl="/App_Themes/Admin/images/edit.png" CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' />
                                             <asp:ImageButton ID="cmdDelete" runat="server" AlternateText="Xóa" CommandName="Delete"
                                                 CssClass="Delete" ToolTip="Xóa" ImageUrl="/App_Themes/Admin/images/delete.png"
-                                                CommandArgument='' OnClientClick="javascript:return confirm('Bạn có muốn xóa?');" />
+                                                CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' OnClientClick="javascript:return confirm('Bạn có muốn xóa?');" />
                                             <asp:ImageButton ID="cmdActive" runat="server" AlternateText=''
-                                                CommandName="Active" CssClass="Active" ToolTip=''
+                                                CommandName="Active" CssClass="Active" ToolTip='#'
                                                 ImageUrl=''
-                                                CommandArgument='' />
+                                                CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' />
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Function" />
                                     </asp:TemplateColumn>
@@ -102,7 +104,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading adm2">
+                    <div class="panel-heading adm2" id="pnUpdate">
                         Cập nhật thông tin
                     </div>
                     <div class="panel-body">
@@ -145,14 +147,14 @@
 
                                 <div class="form-group">
                                     Kích hoạt:
-                                    <asp:CheckBox ID="chkActive" runat="server" />
+                                    <asp:CheckBox ID="chkActive" runat="server" Checked="True" />
                                 </div>
 
 
                                 <asp:ValidationSummary ShowMessageBox="true" ShowSummary="false" ID="ValSummary" ValidationGroup="Save" runat="server" />  
 
-                                <asp:LinkButton CssClass="btn btn-default" ID="lbtUpdateT" runat="server"  ValidationGroup="Save"><i class="icon-save"></i>&nbsp; Lưu </asp:LinkButton>
-                                <asp:LinkButton CssClass="btn btn-default" ID="lbtBackT" runat="server" 
+                                <asp:LinkButton CssClass="btn btn-default" ID="lbtUpdateT" runat="server" OnClick="Update_Click" ValidationGroup="Save"><i class="icon-save"></i>&nbsp; Lưu </asp:LinkButton>
+                                <asp:LinkButton CssClass="btn btn-default" ID="lbtBackT" runat="server" OnClick="Back_Click"
                                     CausesValidation="False"><i class="icon-chevron-left"></i>&nbsp; Trở về</asp:LinkButton>
                                 </form>
                             </div>

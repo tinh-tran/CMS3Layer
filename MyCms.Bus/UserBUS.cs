@@ -9,6 +9,12 @@ namespace MyCms.Bus
     public class UserBUS
     {
         private static UserDAO db = new UserDAO();
+        #region [User_GetByID]
+        public static List<User> User_GetById (string Id)
+        {
+            return db.User_GetById(Id);
+        }
+        #endregion
         #region[User_Validate]
         /// <summary>
         /// Lấy thông tin mật khẩu vào username
@@ -24,6 +30,25 @@ namespace MyCms.Bus
             {
                 return obj.Username == UserName && obj.Password == Password;
             });
+        }
+        #endregion
+
+        #region [User_GetByAll]
+        public static List<Data.User> User_GetByAll()
+        {
+            return db.User_GetByAll();
+        }
+        #endregion
+        #region [User_Insert]
+        public static bool User_Insert(Data.User data)
+        {
+            return db.User_Insert(data) ;
+        }
+        #endregion  
+        #region [User_Update]
+        public static bool User_Update(Data.User data)
+        {
+            return db.User_Update(data);
         }
         #endregion
     }
