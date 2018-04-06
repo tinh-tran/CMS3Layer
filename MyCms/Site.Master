@@ -40,7 +40,7 @@
           <ul class="sidebar-menu">
                 
                             <li class="treeview">
-              <a  href="/quantri">
+              <a  href="/">
                 <i class="fa fa-dashboard fa-fw"></i> <span>Bảng Điều Khiển</span> <i class="fa fa-angle-left pull-right"></i>
               </a>         
             </li>
@@ -60,7 +60,7 @@
         </div>
         <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
+          <b>Version</b> 4.0
         </div>
         <strong>Copyright &copy; 2018 <a href="http://sweetsoft.net/"> SweetSoft </a></strong> All rights reserved.
       </footer>

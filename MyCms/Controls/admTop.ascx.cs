@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MyCms.Bus;
 
 namespace MyCms.Controls
 {
@@ -11,6 +12,11 @@ namespace MyCms.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Data.User> list = UserBUS.User_GetById(Request.Cookies["IdUser"].Value);
+            if (list.Count > 0)
+            {
+                ltrUsername.Text = list[0].Name;
+            }
 
         }
     }

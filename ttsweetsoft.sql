@@ -61,3 +61,20 @@ begin
 	 WHERE Id = @Id
 END
 
+CREATE PROC sp_User_Delete
+	@Id int
+AS
+begin 
+DELETE * FROM Users WHERE ID= @ID
+END 
+
+
+
+GO
+CREATE PROC sp_User_UpdatePass
+	@Id int, 
+	@Password ntext
+AS
+BEGIN 
+UPDATE Users SET Password = @Password WHERE Id= @Id
+END

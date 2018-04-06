@@ -11,7 +11,10 @@ namespace MyCms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.Cookies["IdUser"] == null)
+            {
+                Response.Redirect("/login");
+            }
         }
     }
 }

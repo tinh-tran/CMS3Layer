@@ -10,6 +10,7 @@ namespace MyCms.Common
 {
     public class ControlClass
     {
+       
         //reset giá trị các control
         public static void ResetControlValues(Control parent)
         {

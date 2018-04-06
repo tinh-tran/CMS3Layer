@@ -10,7 +10,7 @@ namespace MyCms.Bus
     {
         private static UserDAO db = new UserDAO();
         #region [User_GetByID]
-        public static List<User> User_GetById (string Id)
+        public static List<Data.User> User_GetById (string Id)
         {
             return db.User_GetById(Id);
         }
@@ -22,7 +22,7 @@ namespace MyCms.Bus
         /// <param name="UserName"></param>
         /// <param name="Password"></param>
         /// <returns></returns>
-        public static List<User> User_Validate(string UserName, string Password)
+        public static List<Data.User> User_Validate(string UserName, string Password)
         {
             List<User> list = new List<User>();
             list = db.User_GetByAll();
@@ -32,7 +32,12 @@ namespace MyCms.Bus
             });
         }
         #endregion
-
+        #region [User_GetByID]
+        public static List<Data.User> User_GetByAll(string Id)
+        {
+            return db.User_GetById(Id);
+        }
+        #endregion
         #region [User_GetByAll]
         public static List<Data.User> User_GetByAll()
         {
@@ -44,7 +49,13 @@ namespace MyCms.Bus
         {
             return db.User_Insert(data) ;
         }
-        #endregion  
+        #endregion
+        #region [User_Updatepass]
+        public static bool User_UpdatePass(string id ,string password)
+        {
+            return db.User_UpdatePass(id, password);
+        }
+        #endregion
         #region [User_Update]
         public static bool User_Update(Data.User data)
         {

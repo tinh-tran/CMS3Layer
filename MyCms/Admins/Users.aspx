@@ -86,8 +86,8 @@
                                                 CssClass="Delete" ToolTip="Xóa" ImageUrl="/App_Themes/Admin/images/delete.png"
                                                 CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' OnClientClick="javascript:return confirm('Bạn có muốn xóa?');" />
                                             <asp:ImageButton ID="cmdActive" runat="server" AlternateText=''
-                                                CommandName="Active" CssClass="Active" ToolTip='#'
-                                                ImageUrl=''
+                                                CommandName="Active" CssClass="Active" ToolTip='<%#MyCms.Common.PageHelper.ShowActiveToolTip(DataBinder.Eval(Container.DataItem, "Active").ToString())%>'
+                                                ImageUrl='<%#MyCms.Common.PageHelper.ShowActiveImage(DataBinder.Eval(Container.DataItem, "Active").ToString())%>'
                                                 CommandArgument='<%#DataBinder.Eval(Container.DataItem,"Id")%>' />
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Function" />

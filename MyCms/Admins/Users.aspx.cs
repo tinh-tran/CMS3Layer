@@ -139,14 +139,34 @@ namespace MyCms.Admins
             switch (e.CommandName)
             {
                 case "Edit":
-                   
+                    txtPass.Text = "";
+                    txtPass.Visible = false;
+                    List<Data.User> ListE = UserBUS.User_GetById(strCA);
+                    txtId.Text = strCA;
+                    txtImage.Text = ListE[0].Image.Length > 0 ? ListE[0].Image: "";
+                    txtDate.Text = DateTimeClass.ConvertDateTime(ListE[0].DateCreate, "MM/dd/yyyy");
+                    txtName.Text = ListE[0].Name;
+                    txtUsername.Text = ListE[0].Username;
+                    ddlAdmin.SelectedValue = ListE[0].Admin;
+                    chkActive.Checked = ListE[0].Active == "1" || ListE[0].Active == "True";
+                    pnView.Visible = false;
+                    pnUpdate.Visible = true;
+                    break;
                 case "Active":
+                    string strA = "";
+                    string str = e.Item.Cells[2].Text;
+                    strA = str == "1" ? "0" : "1";
+                    SqlDataProvider sql = new SqlDataProvider();
+                    sql.ExecuteNonQuery("Update Users set Active=" + strA + "  Where Id='" + strCA + "'");
+                    BindGrid();
                     break;
                 case "Delete":
                     UserBUS.User_Delete(strCA);
                     BindGrid();
                     break;
                 case "Pass":
+                    Response.Redirect("/Admins/UpdatePass.aspx?Id=" + strCA + "");
+                    BindGrid();
                     break;
                 case "Role":
                     break;
@@ -207,7 +227,8 @@ namespace MyCms.Admins
 
         protected void Back_Click(object sender, EventArgs e)
         {
-
+            pnView.Visible = true;
+            pnUpdate.Visible = false;
         }
     }
 }

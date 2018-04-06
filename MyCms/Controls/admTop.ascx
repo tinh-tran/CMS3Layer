@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="admTop.ascx.cs" Inherits="MyCms.Controls.admTop" %>
+<%@ Import Namespace="MyCms.Common" %>
 <header class="main-header">        
         <a href="/admin" class="logo">         
           <span class="logo-mini"><b>S.W.E.E.T</b></span>         
@@ -41,8 +42,6 @@
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
                       <li><asp:LinkButton ID="lbtVi" runat="server"> <i class="fa fa-flag fa-fw"></i>    Tiếng Việt</asp:LinkButton></li>
-                      <li><asp:LinkButton ID="lbtEn" runat="server"> <i class="fa fa-flag fa-fw"></i>   Tiếng Anh </asp:LinkButton></li>
-                      <li><asp:LinkButton ID="lbtCn" runat="server" > <i class="fa fa-flag fa-fw"></i>   Tiếng Trung </asp:LinkButton></li>
                     </ul>
                   </li>
                   
@@ -70,7 +69,7 @@
                       <a href="#" class="btn btn-default btn-flat">Thay mật khẩu</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#logout" class="btn btn-default btn-flat">Đăng xuất</a>
+                      <a href="<%=GlobalClass.ApplicationPath %>/logout" class="btn btn-default btn-flat">Đăng xuất</a>
                     </div>
                   </li>
                 </ul>

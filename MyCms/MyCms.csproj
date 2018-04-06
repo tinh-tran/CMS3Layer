@@ -127,6 +127,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admins\UpdatePass.aspx" />
     <Content Include="Admins\Users.aspx" />
     <Content Include="App_Themes\Admin\AdminLTE.min.css" />
     <Content Include="App_Themes\Admin\alt\AdminLTE-bootstrap-social.css" />
@@ -222,6 +223,7 @@
     <Content Include="App_Themes\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Css\fontawesome-webfont.woff" />
     <Content Include="Css\fontawesome-webfont.woff2" />
+    <Content Include="Modules\Pages\Logout.aspx" />
     <Content Include="Scripts\ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="Scripts\ckeditor\plugins\scayt\README.md" />
     <Content Include="Scripts\ckeditor\plugins\wsc\LICENSE.md" />
@@ -845,6 +847,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins\UpdatePass.aspx.cs">
+      <DependentUpon>UpdatePass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\UpdatePass.aspx.designer.cs">
+      <DependentUpon>UpdatePass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admins\Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -870,6 +879,13 @@
     </Compile>
     <Compile Include="Modules\Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Pages\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Pages\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

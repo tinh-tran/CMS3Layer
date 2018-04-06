@@ -3,14 +3,14 @@ namespace MyCms.Data
 {
     public class UserDAO : SqlDataProvider
     {
-        #region[User_GetById]        public List<User> User_GetById(string Id)
+        #region[User_GetById]        public List<Data.User> User_GetById(string id)
         {
             List<Data.User> list = new List<Data.User>();
             using (SqlCommand dbCmd = new SqlCommand("sp_User_GetById", GetConnection()))
             {
                 Data.User obj = new Data.User();
                 dbCmd.CommandType = CommandType.StoredProcedure;
-                dbCmd.Parameters.Add(new SqlParameter("@Id", Id));
+                dbCmd.Parameters.Add(new SqlParameter("@Id", id));
                 SqlDataReader dr = dbCmd.ExecuteReader();
                 if (dr.HasRows)
                 {
@@ -24,6 +24,21 @@ namespace MyCms.Data
                 obj = null;
             }
             return list;
+        }
+        #endregion
+        #region [User_UpdatePass]
+        public bool User_UpdatePass(string password, string id)
+        {
+            using (SqlCommand dbCmd = new SqlCommand("sp_User_UpdatePass", GetConnection())) 
+            {
+                dbCmd.CommandType = CommandType.StoredProcedure;
+                dbCmd.Parameters.Add(new SqlParameter("@Id", id));
+                dbCmd.Parameters.Add(new SqlParameter("Password", password));
+                dbCmd.ExecuteNonQuery();
+            }
+            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            return true;
+
         }
         #endregion
 
