@@ -85,6 +85,7 @@
     <Compile Include="ControlClass.cs" />
     <Compile Include="DateTimeClass.cs" />
     <Compile Include="GlobalClass.cs" />
+    <Compile Include="NumberClass.cs" />
     <Compile Include="PageHelper.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

@@ -10,9 +10,9 @@ namespace MyCms.Data
     public class ModuleDAO : SqlDataProvider
     {
         #region [Module_GetByAll]
-        public List<Data.Module> Module_GetByAll()
+        public List<Module> Module_GetByAll()
         {
-            List<Data.Module> list = new List<Module>();
+            List<Data.Module> list = new List<Data.Module>();
             using (SqlCommand dbCmd = new SqlCommand("sp_Module_GetByAll", GetConnection()))
             {
                 Data.Module obj = new Data.Module();
@@ -20,7 +20,7 @@ namespace MyCms.Data
                 SqlDataReader dr = dbCmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    while (dr.HasRows)
+                    while (dr.Read())
                     {
                         list.Add(obj.ModuleIDataReader(dr));
                     }
@@ -33,9 +33,9 @@ namespace MyCms.Data
         }
         #endregion
         #region [Module_GetById]
-        public List<Data.Module> Module_GetById(string Id)
+        public List<Module> Module_GetById(string Id)
         {
-            List<Data.Module> list = new List<Module>();
+            List<Data.Module> list = new List<Data.Module>();
             using (SqlCommand dbCmd = new SqlCommand("sp_Module_GetById", GetConnection()))
             {
                 Data.Module obj = new Data.Module();
@@ -44,10 +44,11 @@ namespace MyCms.Data
                 SqlDataReader dr = dbCmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    while (dr.HasRows)
+                    while (dr.Read())
                     {
                         list.Add(obj.ModuleIDataReader(dr));
                     }
+
                 }
                 dr.Close();
                 obj = null;
@@ -56,9 +57,9 @@ namespace MyCms.Data
         }
         #endregion
         #region [Module_GetByTop]
-        public List<Data.Module> Module_GetByTop(string Top, string Where, string Order)
+        public List<Module> Module_GetByTop(string Top, string Where, string Order)
         {
-            List<Data.Module> list = new List<Module>();
+            List<Data.Module> list = new List<Data.Module>();
             using (SqlCommand dbCmd = new SqlCommand("sp_Module_GetByTop", GetConnection()))
             {
                 Data.Module obj = new Data.Module();
@@ -69,10 +70,11 @@ namespace MyCms.Data
                 SqlDataReader dr = dbCmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    while (dr.HasRows)
+                    while (dr.Read())
                     {
                         list.Add(obj.ModuleIDataReader(dr));
                     }
+
                 }
                 dr.Close();
                 obj = null;

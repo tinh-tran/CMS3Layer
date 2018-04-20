@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace MyCms.Common
 {
@@ -115,6 +116,16 @@ namespace MyCms.Common
                 };
                 System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
             }
+        }
+        public static void CreateClientScriptAttributes(TextBox textBox, string Event, string Funtion, string ScriptFuntion)
+        {
+            textBox.Page.ClientScript.RegisterClientScriptBlock(textBox.GetType(), textBox.ID.ToString() + "_" + Event, ScriptFuntion);
+            textBox.Attributes.Add(Event, Funtion);
+        }
+        public static void CreateClientScriptAttributes(CheckBox checkBox, string Event, string Funtion, string ScriptFuntion)
+        {
+            checkBox.Page.ClientScript.RegisterClientScriptBlock(checkBox.GetType(), checkBox.ID.ToString() + "_" + Event, ScriptFuntion);
+            checkBox.Attributes.Add(Event, Funtion);
         }
         public static string ReadItemLanguage(string urlSource, string idItem, string idLanguage)
         {

@@ -33,8 +33,6 @@ namespace MyCms.Data
         #endregion
 
         #region [ModuleIDataReader]
-
-        #endregion
         public Module ModuleIDataReader(IDataReader dr)
         {
             Data.Module obj = new Data.Module();
@@ -47,6 +45,8 @@ namespace MyCms.Data
             obj.Active = (dr["Active"] is DBNull) ? string.Empty : dr["Active"].ToString();
             return obj;
         }
+        #endregion
+
 
     }
 }

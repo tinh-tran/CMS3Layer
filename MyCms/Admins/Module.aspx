@@ -64,7 +64,7 @@
                                          <asp:TemplateColumn >
                                         <HeaderTemplate>Icon</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblicon" runat="server" Text=''></asp:Label>
+                                            <asp:Label ID="lblicon" runat="server" Text='<%# hienthiIcon(DataBinder.Eval(Container.DataItem, "Icon").ToString()) %>'></asp:Label>
                                         </ItemTemplate>
                                         
                                     </asp:TemplateColumn>

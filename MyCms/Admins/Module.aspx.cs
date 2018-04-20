@@ -13,18 +13,16 @@ namespace MyCms.Admins
 {
     public partial class Module : System.Web.UI.Page
     {
-        private string Id = "";
-        private bool Insert = true;
+        static string Id = "";
+        static bool Insert = false;
         SqlDataProvider sql = new SqlDataProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 lbtDeleteT.Attributes.Add("onClick", "javascript:return confirm('Bạn có muốn xóa?');");
-                // NumberClass.OnlyInputNumber(txtOrd);
-                //trImages.Visible = false;
+                NumberClass.OnlyInputNumber(txtOrd);
                 BindGrid();
-                // loadimage();
             }
         }
         void BindGrid()
@@ -55,6 +53,7 @@ namespace MyCms.Admins
 
         protected void RefreshButton_Click(object sender, EventArgs e)
         {
+            Response.Redirect("/Admins/Module.aspx");
             BindGrid();
         }
 
@@ -65,14 +64,52 @@ namespace MyCms.Admins
 
         protected void Update_Click(object sender, EventArgs e)
         {
+            if (Page.IsValid)
+            {
+                Data.Module obj = new Data.Module();
+                obj.Id = Id;
+                obj.Name = txtName.Text;
 
+                if (Request.QueryString["Idcha"] != null)
+                {
+                    obj.IdCha = Request.QueryString["Idcha"].ToString();
+                }
+                else
+                {
+                    obj.IdCha = "0";
+                }
+
+                obj.Ord = txtOrd.Text != "" ? txtOrd.Text : "1";
+                obj.Icon = txtIcon.Text;
+                obj.Link = txtLink.Text;
+                obj.Active = chkActive.Checked ? "1" : "0";
+                if (Insert == true)
+                {
+                    ModuleBUS.Module_Insert(obj);
+                }
+                else
+                {
+                    ModuleBUS.Module_Update(obj);
+                }
+                BindGrid();
+                pnView.Visible = true;
+                pnUpdate.Visible = false;
+                Insert = false;
+            }
         }
 
         protected void Back_Click(object sender, EventArgs e)
         {
-
+            pnView.Visible = true;
+            pnUpdate.Visible = false;
+            Insert = false;
         }
-
+        public string hienthiIcon(string icon)
+        {
+            string s = "";
+            s += "<i class=\"fa " + icon + " \"></i>  ";
+            return s;
+        }
         protected void grdModule_ItemCommand(object source, DataGridCommandEventArgs e)
         {
             string strCA = e.CommandArgument.ToString();
@@ -82,7 +119,6 @@ namespace MyCms.Admins
                     Response.Redirect("/Admins/Module.aspx?Idcha=" + strCA + "");
                     BindGrid();
                     break;
-
                 case "Edit":
                     Insert = false;
                     Id = strCA;
@@ -90,7 +126,7 @@ namespace MyCms.Admins
                     txtName.Text = listE[0].Name;
                     txtOrd.Text = listE[0].Ord;
                     txtIcon.Text = listE[0].Icon;
-                   // lblicon.Text = "<i class=\"fa " + listE[0].Icon + "\"></i>";
+                    Label1.Text = "<i class=\"fa " + listE[0].Icon + "\"></i>";
                     txtLink.Text = listE[0].Link;
                     chkActive.Checked = listE[0].Active == "1" || listE[0].Active == "True";
                     pnView.Visible = false;
@@ -107,9 +143,7 @@ namespace MyCms.Admins
                     ModuleBUS.Module_Delete(strCA);
                     BindGrid();
                     break;
-
                 case "UpdateOrd":
-
                     Int32 tableRowId = e.Item.ItemIndex;
                     TextBox ltrprice = (TextBox)grdModule.Items[tableRowId].FindControl("txtthutu");
                     sql.ExecuteNonQuery("Update Module set Ord=" + ltrprice.Text + "  Where Id='" + strCA + "'");
