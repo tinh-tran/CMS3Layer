@@ -299,7 +299,8 @@ body
     height: 100%;
     display: block;
 }
-#other_products .item:first-child
+#other_
+.item:first-child
 {
     border: 0;
 }

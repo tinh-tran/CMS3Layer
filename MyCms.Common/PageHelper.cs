@@ -21,8 +21,15 @@ namespace MyCms.Common
         {
             string strReturn = ActiveCode == "1" || ActiveCode == "True" ? "hot.png" : "normal.png";
             return GlobalClass.GetUrlAdminImage() + strReturn;
+        }   
+        public static string ShowActiveStatus(string ActiveCode)
+        {
+            return ActiveCode == "1" || ActiveCode == "True" ? "Hiển thị" : "Ẩn";
         }
-
+        public static string ShowTrangThai(string ActiveCode)
+        {
+            return ActiveCode == "1" || ActiveCode == "True" ? "<span style=\"color:#1799A3\">Hoàn thành</span>" : "<span style=\"color:red\">Đang chờ</span>";
+        }
 
 
 

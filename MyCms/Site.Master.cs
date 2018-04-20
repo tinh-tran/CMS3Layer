@@ -15,6 +15,20 @@ namespace MyCms
             {
                 Response.Redirect("/login");
             }
+            if (!IsPostBack)
+            {
+                //menuadminpermission();
+            }
         }
+        //    void menuadminpermission()
+        //    {
+        //        string strUrl = "";
+        //        strUrl = Request.Url.AbsolutePath.ToString();
+        //        if (Request.Cookies["Admin"].Value == "1")
+        //        {
+
+        //        }
+        //}
     }
+
 }

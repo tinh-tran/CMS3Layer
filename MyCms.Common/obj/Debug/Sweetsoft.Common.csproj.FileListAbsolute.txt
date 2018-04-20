@@ -1,0 +1,9 @@
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\bin\MyCms.Common.dll.config
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\bin\MyCms.Common.dll
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\bin\MyCms.Common.pdb
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\obj\Debug\Sweetsoft.Common.csprojResolveAssemblyReference.cache
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\obj\Debug\Sweetsoft.Common.csproj.CoreCompileInputs.cache
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\obj\Debug\MyCms.Common.dll
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Common\obj\Debug\MyCms.Common.pdb

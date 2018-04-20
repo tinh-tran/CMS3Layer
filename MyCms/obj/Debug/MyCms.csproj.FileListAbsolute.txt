@@ -44,4 +44,4 @@ E:\TTSWEETSOFT\CMS\MyCms\MyCms\obj\Debug\MyCms.pdb
 E:\TTSWEETSOFT\CMS\MyCms\MyCms\bin\MyCms.Common.dll
 E:\TTSWEETSOFT\CMS\MyCms\MyCms\bin\MyCms.Common.pdb
 E:\TTSWEETSOFT\CMS\MyCms\MyCms\bin\MyCms.Common.dll.config
-E:\TTSWEETSOFT\CMS\MyCms\MyCms\bin\CKEditor.NET.dll
+E:\TTSWEETSOFT\CMS\MyCms\MyCms\bin\CKFinder.dll

@@ -176,8 +176,8 @@ namespace MyCms.Admins
 
         protected void Update_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid)
-            {
+            //if (Page.IsValid)
+            //{
                 MyCms.Data.User obj = new MyCms.Data.User();
                 obj.Name = txtName.Text;
                 obj.Username = txtUsername.Text;
@@ -218,11 +218,9 @@ namespace MyCms.Admins
                     {
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Update thông tin tài khoản thành công');", true);
                     }
-
-
                 }
 
-            }
+           // }
         }
 
         protected void Back_Click(object sender, EventArgs e)
