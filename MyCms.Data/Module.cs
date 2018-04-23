@@ -24,7 +24,7 @@ namespace MyCms.Data
 
         public string Name { get { return _Name; } set { _Name= value ; } }
 
-        public string IdCha { get { return _Idcha; } set { _Idcha = value; } }
+        public string Idcha { get { return _Idcha; } set { _Idcha = value; } }
 
         public string Ord { get { return _Ord; } set { _Ord=value; } }
         public string Icon { get { return _Icon; } set { _Icon= value ; } }
@@ -38,7 +38,7 @@ namespace MyCms.Data
             Data.Module obj = new Data.Module();
             obj.Id = (dr["Id"] is DBNull) ? string.Empty : dr["Id"].ToString();
             obj.Name = (dr["Name"] is DBNull) ? string.Empty : dr["Name"].ToString();
-            obj.IdCha = (dr["IdCha"] is DBNull) ? string.Empty : dr["IdCha"].ToString();
+            obj.Idcha = (dr["Idcha"] is DBNull) ? string.Empty : dr["IdCha"].ToString();
             obj.Ord = (dr["Ord"] is DBNull) ? string.Empty : dr["Ord"].ToString();
             obj.Icon = (dr["Icon"] is DBNull) ? string.Empty : dr["Icon"].ToString();
             obj.Link = (dr["Link"] is DBNull) ? string.Empty : dr["Link"].ToString();

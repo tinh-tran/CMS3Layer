@@ -13,13 +13,13 @@ namespace MyCms
     {
         void RegisterRoutes(RouteCollection routes)
         {
-            //Image 
-            RouteTable.Routes.MapPageRoute("HinhAnh", "hinhanh", "~/Admins/ImagesList.aspx");
             //admin
             RouteTable.Routes.MapPageRoute("Login", "login", "~/Modules/Pages/Login.aspx");
             RouteTable.Routes.MapPageRoute("Logout", "logout", "~/Modules/Pages/logout.aspx");
             RouteTable.Routes.MapPageRoute("User", "user", "~/Admins/Users.aspx");
         }
+
+
         void Application_Start(object sender, EventArgs e)
         {
             RegisterRoutes(RouteTable.Routes);

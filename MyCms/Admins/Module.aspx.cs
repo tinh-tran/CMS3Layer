@@ -21,6 +21,7 @@ namespace MyCms.Admins
             if (!IsPostBack)
             {
                 lbtDeleteT.Attributes.Add("onClick", "javascript:return confirm('Bạn có muốn xóa?');");
+
                 NumberClass.OnlyInputNumber(txtOrd);
                 BindGrid();
             }
@@ -59,7 +60,21 @@ namespace MyCms.Admins
 
         protected void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            DataGridItem item = default(DataGridItem);
+            for (int i = 0; i < grdModule.Items.Count; i++)
+            {
+                item = grdModule.Items[i];
+                if (item.ItemType == ListItemType.AlternatingItem | item.ItemType == ListItemType.Item)
+                {
+                    if (((CheckBox)item.FindControl("ChkSelect")).Checked)
+                    {
+                        string strId = item.Cells[1].Text;
+                        ModuleBUS.Module_Delete(strId);
+                    }
+                }
+            }
+            grdModule.CurrentPageIndex = 0;
+            BindGrid();
         }
 
         protected void Update_Click(object sender, EventArgs e)
@@ -72,11 +87,11 @@ namespace MyCms.Admins
 
                 if (Request.QueryString["Idcha"] != null)
                 {
-                    obj.IdCha = Request.QueryString["Idcha"].ToString();
+                    obj.Idcha = Request.QueryString["Idcha"].ToString();
                 }
                 else
                 {
-                    obj.IdCha = "0";
+                    obj.Idcha = "0";
                 }
 
                 obj.Ord = txtOrd.Text != "" ? txtOrd.Text : "1";

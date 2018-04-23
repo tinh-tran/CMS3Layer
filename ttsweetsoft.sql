@@ -37,7 +37,7 @@ CREATE TABLE ImagesDetail
 	Active int ,
 	Summary ntext
 )
-
+---module admin
 CREATE TABLE Module (
 	Id INT IDENTITY(1,1) primary key,
 	Name NVARCHAR(50),
@@ -47,6 +47,60 @@ CREATE TABLE Module (
 	Link NVARCHAR(100) NULL DEFAULT NULL,
 	Active TINYINT NULL DEFAULT NULL
 )
+create table Roles(
+	Id INT IDENTITY (1,1) primary key,
+	IdMod INT, 
+	IdMenuAd INT,
+	IdUser INT,
+	IsUpdate tinyint,
+	IsDelete tinyint,
+	IsView tinyint
+)
+---Danh mục hình nảh 
+CREATE TABLE Advertise(
+	Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	Name nvarchar(150),
+	Summary nvarchar(500) ,
+	Image varchar(255) NULL,
+	ImageSmall varchar(255) NULL,
+	Width smallint NULL,
+	Height smallint NULL,
+	Link varchar(255) NULL,
+	Target varchar(10) NULL,
+	ContentDetail ntext NULL,
+	Position smallint NULL,
+	PageId int NULL,
+	Click int NULL,
+	Ord smallint NULL,
+	Active tinyint NULL CONSTRAINT DF_Advertise_Active  DEFAULT ((1)),
+	Lang varchar(5) NULL,
+)
+GO
+
+--table Modul page
+CREATE TABLE Mod(
+	Id int IDENTITY(1,1) NOT NULL primary key,
+	Mod_Parent int,
+	Mod_Name nvarchar(250) ,
+	Mod_Code nvarchar(250) ,
+	Modtype_ID int ,
+	Mod_Url varchar(250),
+	Mod_Img nvarchar(250) ,
+	Mod_Title [nvarchar](250) ,
+	Mod_Key nvarchar(500) ,
+	Mod_Meta nvarchar(500) ,
+	Mod_Content ntext,
+	Mod_Status bit ,
+	Mod_Hot bit ,
+	Mod_Pos int,
+	Mod_Level int,
+	Lang varchar(2) NULL,
+	Mod_style int NULL,
+	Mod_Tag nvarchar(150) NULL,
+	Mod_Intro ntext NULL,
+	Mod_Same bit NULL,
+)
+GO
 --- Img Type----
 CREATE PROCEDURE sp_ImgType_GetById
 	@Id		int
@@ -240,8 +294,7 @@ AS
 	EXEC (@SQL)
 GO
 CREATE PROCEDURE sp_Module_Getlistmodule
-	@ModuleId		varchar(100)
-	
+	@ModuleId		varchar(100)	
 AS
 
 begin
@@ -278,3 +331,45 @@ CREATE proc sp_Module_Delete
 	@Id int
 AS 
 Delete From Module where Id=@Id
+-- Role--- 
+Create proc sp_Roles_GetByAll
+AS
+	SELECT * FROM Module
+GO
+---Advertise---
+create proc sp_Advertise_Delete
+	@Id		int
+AS
+	DELETE FROM Advertise
+	 WHERE Id = @Id
+GO
+create proc sp_Advertise_GetByAll
+	@Lang		varchar(5)
+AS
+	SELECT * FROM Advertise Where Lang = @Lang Order by Id desc
+GO
+create proc sp_Advertise_GetById
+	@Id		int
+AS
+	SELECT * FROM Advertise WHERE Id = @Id
+GO
+create proc sp_Advertise_GetByMod
+@Top	nvarchar(10),
+@Where	nvarchar(200),
+@Order	nvarchar(200)
+AS
+	Declare @SQL as nvarchar(500)
+	Select @SQL = 'SELECT top (' + @Top + ') * from Advertise join Mod on Mod.Id = Advertise.PageId'
+	if len(@Top) = 0 
+		BEGIN
+			Select @SQL = 'SELECT * from Advertise join Mod on Mod.Id = Advertise.PageId'
+		END
+	if len(@Where) >0 
+		BEGIN
+			Select @SQL = @SQL + ' Where ' + @Where
+		END
+	if len(@Order) >0
+		BEGIN
+			Select @SQL = @SQL + ' Order by ' + @Order
+		END
+	EXEC (@SQL)

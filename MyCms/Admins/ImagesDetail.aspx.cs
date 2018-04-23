@@ -11,7 +11,6 @@ namespace MyCms.Admins
 {
     public partial class ImagesDetail : System.Web.UI.Page
     {
-        static string Id = "";
         static string ImagesId = "";
         protected void Page_Load(object sender, EventArgs e)
         {

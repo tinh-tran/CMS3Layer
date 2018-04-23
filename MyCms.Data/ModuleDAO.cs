@@ -89,7 +89,7 @@ namespace MyCms.Data
             {
                 dbCmd.CommandType = CommandType.StoredProcedure;
                 dbCmd.Parameters.Add(new SqlParameter("@Name", obj.Name));
-                dbCmd.Parameters.Add(new SqlParameter("@IdCha", obj.IdCha));
+                dbCmd.Parameters.Add(new SqlParameter("@Idcha", obj.Idcha));
                 dbCmd.Parameters.Add(new SqlParameter("@Ord", obj.Ord));
                 dbCmd.Parameters.Add(new SqlParameter("@Icon", obj.Icon));
                 dbCmd.Parameters.Add(new SqlParameter("@Link", obj.Link));
@@ -108,7 +108,7 @@ namespace MyCms.Data
                 dbCmd.CommandType = CommandType.StoredProcedure;
                 dbCmd.Parameters.Add(new SqlParameter("@Id", obj.Id));
                 dbCmd.Parameters.Add(new SqlParameter("@Name", obj.Name));
-                dbCmd.Parameters.Add(new SqlParameter("@IdCha", obj.IdCha));
+                dbCmd.Parameters.Add(new SqlParameter("@Idcha", obj.Idcha));
                 dbCmd.Parameters.Add(new SqlParameter("@Ord", obj.Ord));
                 dbCmd.Parameters.Add(new SqlParameter("@Icon", obj.Icon));
                 dbCmd.Parameters.Add(new SqlParameter("@Link", obj.Link));

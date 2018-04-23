@@ -1,8 +1,7 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MyCms.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MyCms.SiteMaster"%>
+
 <%@ Register Src="Controls/admTop.ascx" TagName="admTop" TagPrefix="uc1" %>
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head class="Head1" runat="server">
      <title>Hệ thống Quản trị Website</title>        

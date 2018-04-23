@@ -235,6 +235,8 @@
     <Content Include="App_Themes\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Css\fontawesome-webfont.woff" />
     <Content Include="Css\fontawesome-webfont.woff2" />
+    <Content Include="Modules\Pages\404.aspx" />
+    <Content Include="Modules\Pages\Error.aspx" />
     <Content Include="Modules\Pages\Logout.aspx" />
     <Content Include="Scripts\ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="Scripts\ckeditor\plugins\scayt\README.md" />
@@ -243,6 +245,7 @@
     <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="Master\FullWidth.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Jquerry\colorbox\colorbox.css" />
     <Content Include="Jquerry\colorbox\images\controls.png" />
@@ -912,6 +915,27 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FullWidth.Master.cs">
+      <DependentUpon>FullWidth.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\FullWidth.Master.designer.cs">
+      <DependentUpon>FullWidth.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Pages\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Pages\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Pages\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Pages\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
