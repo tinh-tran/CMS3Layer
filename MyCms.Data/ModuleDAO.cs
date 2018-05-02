@@ -96,7 +96,7 @@ namespace MyCms.Data
                 dbCmd.Parameters.Add(new SqlParameter("@Active", obj.Active));
                 dbCmd.ExecuteNonQuery();
             }
-            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            System.Web.HttpContext.Current.Cache.Remove("Module"); // clear server cache 
             return true;
         }
         #endregion
@@ -115,7 +115,7 @@ namespace MyCms.Data
                 dbCmd.Parameters.Add(new SqlParameter("@Active", obj.Active));
                 dbCmd.ExecuteNonQuery();
             }
-            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            System.Web.HttpContext.Current.Cache.Remove("Module"); // clear server cache 
             return true;
         }
         #endregion

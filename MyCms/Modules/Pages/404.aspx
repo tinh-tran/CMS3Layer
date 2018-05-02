@@ -13,7 +13,7 @@
     font-weight: 400;
     font-style: normal;
     margin: 50px 0 0;
-    text-transform: uppercase;"> BẠN ĐANG TRẢI NGHIỆM WEBSITE MỚI CỦA SweetSoft</h1>
+    text-transform: uppercase;"> BẠN ĐANG TRẢI NGHIỆM WEBSITE MỚI CỦA SWEETSOFT</h1>
 <p style="    
     font-size: 24px;
     color: #333;

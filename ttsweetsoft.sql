@@ -76,7 +76,17 @@ CREATE TABLE Advertise(
 	Lang varchar(5) NULL,
 )
 GO
+--- Mod Type------
+CREATE TABLE Modtype(
+	Id int IDENTITY(1,1) PRIMARY KEY,
+	Modtype_Name nvarchar(250),
+	Modtype_Code nvarchar(250),
+	Modtype_Status bit,
+	Modtype_Target nvarchar(250),
+	Modtype_Filter tinyint
 
+)
+GO
 --table Modul page
 CREATE TABLE Mod(
 	Id int IDENTITY(1,1) NOT NULL primary key,
@@ -335,6 +345,184 @@ Delete From Module where Id=@Id
 Create proc sp_Roles_GetByAll
 AS
 	SELECT * FROM Module
+GO
+----ModType-----
+create proc sp_Modtype_GetByAll
+AS
+	SELECT * from Modtype
+GO
+
+create proc sp_Modtype_GetByAll
+	@Id int
+AS
+	SELECT * from Modtype where Id= @Id
+GO
+create proc sp_Modtype_Insert
+	@Modtype_Name		nvarchar(250),
+	@Modtype_Code		nvarchar(250),
+	@Modtype_Status		bit,
+	@Modtype_Target		nvarchar(250),
+	@Modtype_Filter		tinyint
+AS
+	INSERT INTO Modtype(Modtype_Name, Modtype_Code, Modtype_Status, Modtype_Target, Modtype_Filter)
+	VALUES(@Modtype_Name, @Modtype_Code, @Modtype_Status, @Modtype_Target, @Modtype_Filter)
+GO
+create proc sp_Modtype_Update
+	@Id		int,
+	@Modtype_Name		nvarchar(250),
+	@Modtype_Code		nvarchar(250),
+	@Modtype_Status		bit,
+	@Modtype_Target		nvarchar(250),
+	@Modtype_Filter		tinyint
+AS
+	UPDATE Modtype SET  Modtype_Name = @Modtype_Name, 
+						Modtype_Code = @Modtype_Code, 
+						Modtype_Status = @Modtype_Status, 
+						Modtype_Target = @Modtype_Target, 
+						Modtype_Filter = @Modtype_Filter
+	 WHERE Id = @Id
+GO
+
+create proc sp_Modtype_Delete
+	@Id		int
+AS
+	DELETE FROM Modtype
+	 WHERE Id = @Id
+GO
+create proc sp_Modtype_GetByTop
+@Top	nvarchar(10),
+@Where	nvarchar(200),
+@Order	nvarchar(200)
+AS
+	Declare @SQL as nvarchar(500)
+	Select @SQL = 'SELECT top (' + @Top + ') * FROM Modtype'
+	if len(@Top) = 0 
+		BEGIN
+			Select @SQL = 'SELECT * FROM Modtype'
+		END
+	if len(@Where) >0 
+		BEGIN
+			Select @SQL = @SQL + ' Where ' + @Where
+		END
+	if len(@Order) >0
+		BEGIN
+			Select @SQL = @SQL + ' Order by ' + @Order
+		END
+	EXEC (@SQL)
+
+--Mod----
+create proc sp_Mod_GetByAll
+	@Lang		varchar(5)
+AS
+	SELECT * FROM Mod Where Lang = @Lang
+GO
+create proc sp_Mod_GetById
+	@Id int
+AS 
+	SELECT * From Mod where Id= @Id
+GO
+
+create proc sp_Mod_Getlist
+	@ModId		varchar(100)
+	
+AS
+begin
+		select * into #A from dbo.splitstring (@ModId)
+	select * from Mod inner join #A on Mod.Id =  #A.Name
+		drop table #A
+	end
+GO
+create proc sp_Mod_GetByTop
+@Top	nvarchar(10),
+@Where	nvarchar(200),
+@Order	nvarchar(200)
+AS
+	Declare @SQL as nvarchar(500)
+	Select @SQL = 'SELECT top (' + @Top + ') * FROM Mod'
+	if len(@Top) = 0 
+		BEGIN
+			Select @SQL = 'SELECT * FROM Mod'
+		END
+	if len(@Where) >0 
+		BEGIN
+			Select @SQL = @SQL + ' Where ' + @Where
+		END
+	if len(@Order) >0
+		BEGIN
+			Select @SQL = @SQL + ' Order by ' + @Order
+		END
+	EXEC (@SQL)
+GO
+create proc sp_Mod_Delete
+	@Id int
+DELETE From Mod where Id= @Id
+GO
+create proc sp_Mod_Insert
+	@Mod_Parent		int,
+	@Mod_Name		nvarchar(250),
+	@Mod_Code		nvarchar(250),
+	@Modtype_ID		int,
+	@Mod_Url		varchar(250),
+	@Mod_Img		nvarchar(250),
+	@Mod_Title		nvarchar(250),
+	@Mod_Key		nvarchar(500),
+	@Mod_Meta		nvarchar(500),
+	@Mod_Content		ntext,
+	@Mod_Status		bit,
+	@Mod_Hot		bit,
+	@Mod_Pos		int,
+	@Mod_Level		int,
+	@Lang		varchar(2),
+	@Mod_style		int,
+	@Mod_Tag		nvarchar(150),
+	@Mod_Intro		ntext,
+	@Mod_Same		bit
+AS
+	INSERT INTO Mod(Mod_Parent, Mod_Name, Mod_Code, Modtype_ID, Mod_Url, Mod_Img, Mod_Title, Mod_Key, Mod_Meta, Mod_Content, Mod_Status, Mod_Hot, Mod_Pos, Mod_Level, Lang, Mod_style, Mod_Tag, Mod_Intro ,Mod_Same )
+	VALUES(@Mod_Parent, @Mod_Name, @Mod_Code, @Modtype_ID, @Mod_Url, @Mod_Img, @Mod_Title, @Mod_Key, @Mod_Meta, @Mod_Content, @Mod_Status, @Mod_Hot, @Mod_Pos, @Mod_Level, @Lang, @Mod_style, @Mod_Tag, @Mod_Intro , @Mod_Same)
+GO
+create PROC sp_Mod_Update
+	@Id 			int,
+	@Mod_Parent		int,
+	@Mod_Name		nvarchar(250),
+	@Mod_Code		nvarchar(250),
+	@Modtype_ID		int,
+	@Mod_Url		varchar(250),
+	@Mod_Img		nvarchar(250),
+	@Mod_Title		nvarchar(250),
+	@Mod_Key		nvarchar(500),
+	@Mod_Meta		nvarchar(500),
+	@Mod_Content		ntext,
+	@Mod_Status		bit,
+	@Mod_Hot		bit,
+	@Mod_Pos		int,
+	@Mod_Level		int,
+	@Lang		varchar(2),
+	@Mod_style		int,
+	@Mod_Tag		nvarchar(150),
+	@Mod_Intro		ntext,
+	@Mod_Same		bit
+AS
+	Update Mod SET Mod_Parent = @Mod_Parent, 
+				   Mod_Name = @Mod_Name, 
+				   Mod_Code = @Mod_Code,
+				   Modtype_ID= @Modtype_ID,
+				   Mod_Url = @Mod_Url,
+				   Mod_Img = @Mod_Img,
+				   Mod_Title=@Mod_Title, 
+				   Mod_Key =@Mod_Key, 
+				   Mod_Meta =@Mod_Meta, 
+				   Mod_Content =@Mod_Content, 
+				   Mod_Status =@Mod_Status, 
+				   Mod_Hot =@Mod_Hot , 
+				   Mod_Pos =@Mod_Pos, 
+				   Mod_Level =@Mod_Level, 
+				   Lang =@Lang , 
+				   Mod_style =@Mod_style, 
+				   Mod_Tag =@Mod_Tag, 
+				   Mod_Intro =@Mod_Intro,
+				   Mod_Same =@Mod_Same
+	Where Id=@Id
 GO
 ---Advertise---
 create proc sp_Advertise_Delete

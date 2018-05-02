@@ -82,6 +82,10 @@
     <Compile Include="ImagesDetailDAO.cs" />
     <Compile Include="ImgType.cs" />
     <Compile Include="ImgTypeDAO.cs" />
+    <Compile Include="Mod.cs" />
+    <Compile Include="ModDAO.cs" />
+    <Compile Include="Modtype.cs" />
+    <Compile Include="ModtypeDAO.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="ModuleDAO.cs" />
     <Compile Include="SqlDataProvider.cs" />

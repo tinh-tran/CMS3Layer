@@ -98,7 +98,7 @@ namespace MyCms.Data
                 dbCmd.Parameters.Add(new SqlParameter("@Summary", obj.Summary));
                 dbCmd.ExecuteNonQuery();
             }
-            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            System.Web.HttpContext.Current.Cache.Remove("Images"); // clear server cache 
             return true;
         }
         #endregion
@@ -116,7 +116,7 @@ namespace MyCms.Data
                 dbCmd.Parameters.Add(new SqlParameter("@Summary", obj.Summary));
                 dbCmd.ExecuteNonQuery();
             }
-            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            System.Web.HttpContext.Current.Cache.Remove("Images"); // clear server cache 
             return true;
         }
         #endregion
@@ -129,7 +129,7 @@ namespace MyCms.Data
                 dbCmd.Parameters.Add(new SqlParameter("@Id", Id));
                 dbCmd.ExecuteNonQuery();
             }
-            System.Web.HttpContext.Current.Cache.Remove("Users"); // clear server cache 
+            System.Web.HttpContext.Current.Cache.Remove("Images"); // clear server cache 
             return true;
         }
         #endregion

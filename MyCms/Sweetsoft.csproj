@@ -138,6 +138,8 @@
     <Content Include="Admins\Icon.aspx" />
     <Content Include="Admins\ImagesDetail.aspx" />
     <Content Include="Admins\ImagesList.aspx" />
+    <Content Include="Admins\Mod.aspx" />
+    <Content Include="Admins\Modtype.aspx" />
     <Content Include="Admins\Module.aspx" />
     <Content Include="Admins\UpdatePass.aspx" />
     <Content Include="Admins\Users.aspx" />
@@ -882,6 +884,20 @@
     </Compile>
     <Compile Include="Admins\ImagesList.aspx.designer.cs">
       <DependentUpon>ImagesList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\Mod.aspx.cs">
+      <DependentUpon>Mod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Mod.aspx.designer.cs">
+      <DependentUpon>Mod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\Modtype.aspx.cs">
+      <DependentUpon>Modtype.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Modtype.aspx.designer.cs">
+      <DependentUpon>Modtype.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admins\Module.aspx.cs">
       <DependentUpon>Module.aspx</DependentUpon>
