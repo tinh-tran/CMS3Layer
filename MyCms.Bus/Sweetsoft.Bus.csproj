@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="ImagesDetailBUS.cs" />
     <Compile Include="ImgTypeBUS.cs" />
+    <Compile Include="ModBUS.cs" />
     <Compile Include="ModtypeBUS.cs" />
     <Compile Include="ModuleBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

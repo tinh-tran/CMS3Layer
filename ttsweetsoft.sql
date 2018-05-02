@@ -524,6 +524,28 @@ AS
 				   Mod_Same =@Mod_Same
 	Where Id=@Id
 GO
+create proc sp_Mod_GetByType
+@Top	nvarchar(10),
+@Where	nvarchar(200),
+@Order	nvarchar(200)
+AS
+	Declare @SQL as nvarchar(500)
+	Select @SQL = 'SELECT top (' + @Top + ') * from Mod join Modtype on Mod.Modtype_ID=Modtype.Id'
+		
+	if len(@Top) = 0 
+		BEGIN
+			Select @SQL = 'SELECT * from Mod join Modtype on Mod.Modtype_ID=Modtype.Id'
+		END
+	if len(@Where) >0 
+		BEGIN
+			Select @SQL = @SQL + ' Where ' + @Where
+		END
+	if len(@Order) >0
+		BEGIN
+			Select @SQL = @SQL + ' Order by ' + @Order
+		END
+	EXEC (@SQL)
+GO
 ---Advertise---
 create proc sp_Advertise_Delete
 	@Id		int

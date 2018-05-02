@@ -33,21 +33,71 @@ namespace MyCms.Data
             return list;        
         }
         #endregion
-        #region [Mod_GetByTop]
-        public List<Mod> Mod_GetByTop (string Top, string Where, string Oder)
+        #region [Mod_GetById]
+        public List<Mod> Mod_GetById(string Id)
         {
             List<Data.Mod> list = new List<Mod>();
+            using (SqlCommand dbCmd = new SqlCommand("sp_Mod_GetById", GetConnection()))
+            {
+                Data.Mod obj = new Data.Mod();
+                dbCmd.CommandType = CommandType.StoredProcedure;
+                dbCmd.Parameters.Add(new SqlParameter("@Id", Id));
+                SqlDataReader dr = dbCmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        list.Add(obj.ModIDataReader(dr));
+                    }
+
+                }
+                dr.Close();
+                obj = null;
+            }
+            return list;
+        }
+        #endregion
+        #region [Mod_GetByTop]
+        public List<Mod> Mod_GetByTop (string Top, string Where, string Order)
+        {
+            List<Data.Mod> list = new List<Data.Mod>();
             using (SqlCommand dbCmd = new SqlCommand("sp_Mod_GetByTop", GetConnection()))
             {
                 Data.Mod obj = new Data.Mod();
                 dbCmd.CommandType = CommandType.StoredProcedure;
                 dbCmd.Parameters.Add(new SqlParameter("@Top", Top));
                 dbCmd.Parameters.Add(new SqlParameter("@Where", Where));
-                dbCmd.Parameters.Add(new SqlParameter("@Oder", Oder));
+                dbCmd.Parameters.Add(new SqlParameter("@Order", Order));
                 SqlDataReader dr = dbCmd.ExecuteReader();
-                if(dr.HasRows)
+                if (dr.HasRows)
                 {
-                    while(dr.Read())
+                    while (dr.Read())
+                    {
+                        list.Add(obj.ModIDataReader(dr));
+                    }
+
+                }
+                dr.Close();
+                obj = null;
+            }
+            return list;
+        }
+        #endregion
+        #region [Mod_GetByTop]
+        public List<Mod> Mod_GetByType(string Top, string Where, string Order)
+        {
+            List<Data.Mod> list = new List<Mod>();
+            using (SqlCommand dbCmd = new SqlCommand("sp_Mod_GetByType", GetConnection()))
+            {
+                Data.Mod obj = new Data.Mod();
+                dbCmd.CommandType = CommandType.StoredProcedure;
+                dbCmd.Parameters.Add(new SqlParameter("@Top", Top));
+                dbCmd.Parameters.Add(new SqlParameter("@Where", Where));
+                dbCmd.Parameters.Add(new SqlParameter("@Order", Order));
+                SqlDataReader dr = dbCmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
                     {
                         list.Add(obj.ModIDataReader(dr));
                     }
