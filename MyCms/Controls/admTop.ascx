@@ -66,7 +66,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="/Admins/UpdatePass.aspx" class="btn btn-default btn-flat">Thay mật khẩu</a>
+                      <a href="#" class="btn btn-default btn-flat">Thay mật khẩu</a>
                     </div>
                     <div class="pull-right">
                       <a href="<%=GlobalClass.ApplicationPath %>/logout" class="btn btn-default btn-flat">Đăng xuất</a>

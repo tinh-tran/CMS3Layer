@@ -20,7 +20,7 @@ CREATE TABLE Users(
 )
 GO 
 -- giao diện của chương trình ví dụ slider... ---
-CREATE TABLE ImagesType(
+CREATE TABLE ImageType(
 	Id int IDENTITY(1,1) PRIMARY KEY,
 	Name nvarchar(50),
 	Code varchar(50),

@@ -51,7 +51,7 @@ namespace MyCms.Modules.Pages
                 cookie_Admin.Expires = DateTime.Now.AddHours(4);
                 Response.Cookies.Add(cookie_Admin);
 
-                Response.Redirect("/user");
+                Response.Redirect("/");
             }
             else
             {
