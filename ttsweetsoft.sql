@@ -1,7 +1,7 @@
-CREATE DATABASE CMSTT
+CREATE DATABASE sweetsoft
 
 go
-use CMSTT
+use sweetsoft
 --- Tạo bảng user---- 
 go
 
@@ -117,8 +117,7 @@ create proc sp_ImgType_GetById
 	@Id		int
 AS
 	SELECT * FROM [ImgType] WHERE Id = @Id
-
-
+GO
 CREATE PROCEDURE sp_ImgType_GetById
 	@Id		int
 AS
@@ -155,7 +154,7 @@ create proc sp_ImgType_Insert
 	@Code varchar(50),
 	@Active tinyint
 AS
-	Insert Into ImageType(Name,Code,Active) VALUES (@Name,@Code,@Active)
+	Insert Into ImageType (Name,Code,Active) VALUES (@Name,@Code,@Active)
 GO
 create proc sp_ImgType_Update
 	@Id 	int,
@@ -207,10 +206,10 @@ CREATE PROC sp_ImagesDetail_Insert
 	@Summary ntext
 AS
 	INSERT INTO ImagesDetail(Name, Image, ImagesId, Active, Summary)
-	VALUES(@Name, @Username, @Password, @Admin, @Active, @Image, @DateCreate, @Role, @ModuleId, @ModuleName)
+	VALUES(@Name, @Image, @ImagesId, @Active, @Summary)
 GO
 
-ALTER PROCEDURE sp_ImagesDetail_Update
+create PROCEDURE sp_ImagesDetail_Update
 	@Id		int,
 	@Name		nvarchar(512),
 	@Image		ntext,
@@ -221,14 +220,12 @@ AS
 	UPDATE ImagesDetail SET Name = @Name, Image = @Image, ImagesId = @ImagesId, Active = @Active , Summary = @Summary
 	 WHERE Id = @Id
 
-
-
-
+GO
 CREATE PROC sp_ImagesDetail_Delete
 	@Id int 
 as 
 delete from ImagesDetail where Id= @Id
-
+GO
 CREATE PROCEDURE sp_ImagesDetail_GetByTop
 @Top	nvarchar(10),
 @Where	nvarchar(200),
@@ -282,12 +279,12 @@ begin
 	UPDATE Users SET Name = @Name, Username = @Username, Password = @Password, Admin = @Admin, Active = @Active, Image = @Image, DateCreate = @DateCreate, Role = @Role, ModuleId = @ModuleId, ModuleName = @ModuleName
 	 WHERE Id = @Id
 END
-
+GO
 CREATE PROC sp_User_Delete
 	@Id int
 AS
 begin 
-DELETE * FROM Users WHERE ID= @ID
+DELETE FROM Users WHERE ID= @ID
 END 
 
 GO
@@ -298,7 +295,7 @@ AS
 BEGIN 
 UPDATE Users SET Password = @Password WHERE Id= @Id
 END
-
+GO
 --- Module --- 
 Create proc sp_Module_GetByAll
 AS
