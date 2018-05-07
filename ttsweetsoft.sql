@@ -112,26 +112,33 @@ CREATE TABLE Mod(
 )
 GO
 --- Img Type----
+
+create proc sp_ImgType_GetById
+	@Id		int
+AS
+	SELECT * FROM [ImgType] WHERE Id = @Id
+
+
 CREATE PROCEDURE sp_ImgType_GetById
 	@Id		int
 AS
-	SELECT * FROM ImgType WHERE Id = @Id
+	SELECT * FROM ImageType WHERE Id = @Id
 
 GO
 CREATE PROCEDURE sp_ImgType_GetByAll
 AS
-	SELECT * FROM ImgType
+	SELECT * FROM ImageType
 GO
-CREATE PROCEDURE sp_ImageType_GetByTop
+CREATE PROCEDURE sp_ImgType_GetByTop
 @Top	nvarchar(10),
 @Where	nvarchar(200),
 @Order	nvarchar(200)
 AS
 	Declare @SQL as nvarchar(500)
-	Select @SQL = 'SELECT top (' + @Top + ') * FROM ImgType'
+	Select @SQL = 'SELECT top (' + @Top + ') * FROM ImageType'
 	if len(@Top) = 0 
 		BEGIN
-			Select @SQL = 'SELECT * FROM ImgType'
+			Select @SQL = 'SELECT * FROM ImageType'
 		END
 	if len(@Where) >0 
 		BEGIN
@@ -142,7 +149,27 @@ AS
 			Select @SQL = @SQL + ' Order by ' + @Order
 		END
 	EXEC (@SQL)
-
+GO
+create proc sp_ImgType_Insert
+	@Name nvarchar(50),
+	@Code varchar(50),
+	@Active tinyint
+AS
+	Insert Into ImageType(Name,Code,Active) VALUES (@Name,@Code,@Active)
+GO
+create proc sp_ImgType_Update
+	@Id 	int,
+	@Name nvarchar(50),
+	@Code varchar(50),
+	@Active tinyint
+AS
+	Update ImageType SET Name = @Name , Code = @Code , Active = @Active Where Id=@Id
+GO
+create proc sp_ImgType_Delete
+	@Id 	int
+AS
+	Delete ImageType Where Id=@Id
+GO
 --- ImagesDetail ---
 CREATE PROC sp_ImagesDetail_GetById
 	@Id int 
@@ -583,3 +610,101 @@ AS
 			Select @SQL = @SQL + ' Order by ' + @Order
 		END
 	EXEC (@SQL)
+create proc sp_Advertise_GetByTop
+@Top	nvarchar(10),
+@Where	nvarchar(200),
+@Order	nvarchar(200)
+AS
+	Declare @SQL as nvarchar(500)
+	Select @SQL = 'SELECT top (' + @Top + ') * FROM Advertise'
+	if len(@Top) = 0 
+		BEGIN
+			Select @SQL = 'SELECT * FROM Advertise'
+		END
+	if len(@Where) >0 
+		BEGIN
+			Select @SQL = @SQL + ' Where ' + @Where
+		END
+	if len(@Order) >0
+		BEGIN
+			Select @SQL = @SQL + ' Order by ' + @Order
+		END
+	EXEC (@SQL)
+GO
+create proc sp_Advertise_GetByType
+@Top	nvarchar(10),
+@Where	nvarchar(200),
+@Order	nvarchar(200)
+AS
+	Declare @SQL as nvarchar(500)
+	Select @SQL = 'SELECT top (' + @Top + ') * FROM Advertise select * from Advertise join ImgType on Advertise.Position=ImgType.Id'
+	if len(@Top) = 0 
+		BEGIN
+			Select @SQL = 'SELECT * FROM Advertise select * from Advertise join ImgType on Advertise.Position=ImgType.Id'
+		END
+	if len(@Where) >0 
+		BEGIN
+			Select @SQL = @SQL + ' Where ' + @Where
+		END
+	if len(@Order) >0
+		BEGIN
+			Select @SQL = @SQL + ' Order by ' + @Order
+		END
+	EXEC (@SQL)
+GO
+create proc sp_Advertise_Insert
+	@Name		nvarchar(150),
+	@Image		varchar(255),
+	@ImageSmall		varchar(255),
+	@Summary		nvarchar(500),
+	@Width		smallint,
+	@Height		smallint,
+	@Link		varchar(255),
+	@Target		varchar(10),
+	@ContentDetail		ntext,
+	@Position		smallint,
+	@PageId		int,
+	@Click		int,
+	@Ord		smallint,
+	@Active		tinyint,
+	@Lang		varchar(5)
+AS
+	INSERT INTO Advertise(Name, Image, ImageSmall,Summary, Width, Height, Link, Target, ContentDetail, Position, PageId, Click, Ord, Active, Lang)
+	VALUES(@Name, @Image, @ImageSmall,@Summary, @Width, @Height, @Link, @Target, @ContentDetail, @Position, @PageId, @Click, @Ord, @Active, @Lang)
+GO
+create proc sp_Advertise_Update
+	@Id 		int,
+	@Name		nvarchar(150),
+	@Image		varchar(255),
+	@ImageSmall		varchar(255),
+	@Summary		nvarchar(500),
+	@Width		smallint,
+	@Height		smallint,
+	@Link		varchar(255),
+	@Target		varchar(10),
+	@ContentDetail		ntext,
+	@Position		smallint,
+	@PageId		int,
+	@Click		int,
+	@Ord		smallint,
+	@Active		tinyint,
+	@Lang		varchar(5)
+AS
+	Update SET Adverties 	Name =@Name, 
+							Image =@Image, 
+							ImageSmall =@ImageSmall,
+							Summary =@Summary, 
+							Width =@Width, 
+							Height =@Height, 
+							Link =@Link, 
+							Target =@Target, 
+							ContentDetail =@ContentDetail, 
+							Position =@Position, 
+							PageId =@PageId, 
+							Click =@Click, 
+							Ord =@Ord, 
+							Active =@Active, 
+							Lang =@Lang
+			Where Id=@Id 
+GO
+						

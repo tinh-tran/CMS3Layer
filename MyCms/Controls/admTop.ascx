@@ -59,14 +59,14 @@
                   <li class="user-header">
                   <img src="/App_Themes/Admin/images/user.png" class="img-circle" alt="User Image" />
                     <p>                     
-                      <small><a href='/Admins/User.aspx' style="color:#fff">Thay đổi thông tin tài khoản</a></small>
+                     <small><a href='/Admins/Users.aspx' style="color:#fff">Thay đổi thông tin tài khoản</a></small>
                     </p>
                   </li>
                 
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Thay mật khẩu</a>
+                      <a href="/Admins/UpdatePass.aspx" class="btn btn-default btn-flat">Thay mật khẩu</a>
                     </div>
                     <div class="pull-right">
                       <a href="<%=GlobalClass.ApplicationPath %>/logout" class="btn btn-default btn-flat">Đăng xuất</a>

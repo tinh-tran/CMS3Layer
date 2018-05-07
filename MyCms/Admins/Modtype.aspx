@@ -22,7 +22,6 @@
             </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                  
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
@@ -108,12 +107,8 @@
                                      </div>
                                        <div class="form-group">
                                        Kích hoạt:
-                                            <asp:CheckBox ID="chkStatus" runat="server" />
-                                            
-                                     </div>
-                                       
-                    
-                                                                                                       
+                                            <asp:CheckBox ID="chkStatus" runat="server" />        
+                                     </div>                                                                              
                     <asp:LinkButton CssClass="btn btn-default" ID="lbtUpdateT" runat="server" OnClick="Update_Click"><i class="icon-save"></i>&nbsp; Lưu </asp:LinkButton>
                                 <asp:LinkButton CssClass="btn btn-default" ID="lbtBackT" runat="server" OnClick="Back_Click"
                                     CausesValidation="False"><i class="icon-chevron-left"></i>&nbsp; Trở về</asp:LinkButton>
