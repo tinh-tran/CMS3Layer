@@ -20,7 +20,7 @@
     <%--Fontstyle--%>
     <link href="App_Themes/Admin/font-awesome.min.css" rel="stylesheet" type="text/css" />
      
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+  <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
     <style>
     .table tr td{ text-align:center; white-space: nowrap;}
     
@@ -38,25 +38,45 @@
         <section class="sidebar">                  
           <ul class="sidebar-menu">
                 
-                            <li class="treeview">
-              <a  href="/">
+            <li class="treeview">
+              <a  href="#">
                 <i class="fa fa-dashboard fa-fw"></i> <span>Bảng Điều Khiển</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>         
+              </a>  
+                 <a href="#">
+                            <i class="fa fa-link"></i> <span>Quản lý bài viết</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Admins/BaiViet/QLDanhMuc.aspx">Danh mục bài viết</a></li>
+                            <li><a href="#">Bài viết</a></li>
+                        </ul>
             </li>
-
             <asp:Literal ID="ltrmenuadmin" runat="server"></asp:Literal>
-
                                                                                
           </ul>
         </section>
         <!-- /.sidebar -->
       </aside>
+
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">                      
-   
-                   <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>              
+        <div class="content-wrapper">   
+        
+         <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>        
+             <!-- Main content -->
+            <section class="content container-fluid">
+                <head>
+                   <link href="/Css/style.css" rel="stylesheet" />
+                <asp:ContentPlaceHolder ID="main" runat="server">
+                    <!-- Nội dung trang con sẽ hiển thị ở đây -->
+                </asp:ContentPlaceHolder>
+               </head>
+             </section>
+        <!-- /.content -->       
 
         </div>
+        <!-- Main Footer -->
         <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 4.0
