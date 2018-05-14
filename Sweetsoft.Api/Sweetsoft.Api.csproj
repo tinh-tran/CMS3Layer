@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,8 +167,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyCms.Bus\Sweetsoft.Bus.csproj">
+      <Project>{51c799a9-1d2e-410c-94d0-665f1e11d569}</Project>
+      <Name>Sweetsoft.Bus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyCms.Data\Sweetsoft.Data.csproj">
+      <Project>{54217501-d79e-4ddb-9b78-fcd29ef54396}</Project>
+      <Name>Sweetsoft.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -15,3 +15,9 @@ E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\obj\Debug\Sweetsoft.Api.csprojResolveAsse
 E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\obj\Debug\Sweetsoft.Api.csproj.CoreCompileInputs.cache
 E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\obj\Debug\Sweetsoft.Api.dll
 E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\obj\Debug\Sweetsoft.Api.pdb
+E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\bin\MyCms.Bus.dll
+E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\bin\MyCms.Data.dll
+E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\bin\MyCms.Bus.pdb
+E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\bin\MyCms.Bus.dll.config
+E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\bin\MyCms.Data.pdb
+E:\TTSWEETSOFT\CMS\MyCms\Sweetsoft.Api\bin\MyCms.Data.dll.config
