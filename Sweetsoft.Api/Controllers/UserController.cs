@@ -48,5 +48,46 @@ namespace Sweetsoft.Api.Controllers
                 throw ex;
             }
         }
+        [HttpPost]
+        public bool User_Insert (string Name, string UserName, string DateCreate, string Password, string Image,string Admin, string Role, string ModuleId, string ModuleName, string Active)
+        {
+            User obj = new User();
+            obj.Name = Name;
+            obj.Username = UserName;
+            obj.DateCreate = DateCreate;
+            obj.Password = Password;
+            obj.Image = Image;
+            obj.Admin = Admin;
+            obj.Role = Role;
+            obj.ModuleId = ModuleId;
+            obj.ModuleName = ModuleName;
+            obj.Active = Active;
+            UserBUS.User_Insert(obj);
+            return true;
+        }
+        [HttpPut]
+        public bool User_Update(string Id, string Name, string UserName, string DateCreate, string Password, string Image, string Admin, string Role, string ModuleId, string ModuleName, string Active)
+        {
+            User obj = new User();
+            obj.Id = Id;
+            obj.Name = Name;
+            obj.Username = UserName;
+            obj.DateCreate = DateCreate;
+            obj.Password = Password;
+            obj.Image = Image;
+            obj.Admin = Admin;
+            obj.Role = Role;
+            obj.ModuleId = ModuleId;
+            obj.ModuleName = ModuleName;
+            obj.Active = Active;
+            UserBUS.User_Update(obj);
+            return true;
+        }
+        [HttpDelete]
+        public bool User_Delete (string Id)
+        {
+            UserBUS.User_Delete(Id);
+            return true;
+        }
     }
 }
