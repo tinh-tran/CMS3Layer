@@ -296,6 +296,23 @@ BEGIN
 UPDATE Users SET Password = @Password WHERE Id= @Id
 END
 GO
+create proc sp_User_Update
+	@Id		int,
+	@Name		nvarchar(256),
+	@Username		varchar(64),
+	@Password		ntext,
+	@Admin		tinyint,
+	@Active		tinyint,
+	@Image		nvarchar(500),
+	@DateCreate		date,
+	@Role		tinyint,
+	@ModuleId		varchar(100),
+	@ModuleName		nvarchar(500)
+AS
+	UPDATE [Users] SET [Name] = @Name, [Username] = @Username, [Password] = @Password, [Admin] = @Admin, [Active] = @Active, [Image] = @Image, [DateCreate] = @DateCreate, [Role] = @Role, [ModuleId] = @ModuleId, [ModuleName] = @ModuleName
+	 WHERE Id = @Id
+GO
+
 --- Module --- 
 Create proc sp_Module_GetByAll
 AS

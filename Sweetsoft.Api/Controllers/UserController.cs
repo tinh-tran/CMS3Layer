@@ -18,10 +18,6 @@ namespace Sweetsoft.Api.Controllers
             {
                 List<User> list = new List<User>();
                 list = UserBUS.User_GetByAll();
-                foreach (User us in list)
-                {
-                    us.Id = null;
-                }
                 return list;
 
             }
@@ -51,19 +47,28 @@ namespace Sweetsoft.Api.Controllers
         [HttpPost]
         public bool User_Insert (string Name, string UserName, string DateCreate, string Password, string Image,string Admin, string Role, string ModuleId, string ModuleName, string Active)
         {
-            User obj = new User();
-            obj.Name = Name;
-            obj.Username = UserName;
-            obj.DateCreate = DateCreate;
-            obj.Password = Password;
-            obj.Image = Image;
-            obj.Admin = Admin;
-            obj.Role = Role;
-            obj.ModuleId = ModuleId;
-            obj.ModuleName = ModuleName;
-            obj.Active = Active;
-            UserBUS.User_Insert(obj);
-            return true;
+            try
+            {
+                User obj = new User();
+                obj.Name = Name;
+                obj.Username = UserName;
+                obj.DateCreate = DateCreate;
+                obj.Password = Password;
+                obj.Image = Image;
+                obj.Admin = Admin;
+                obj.Role = Role;
+                obj.ModuleId = ModuleId;
+                obj.ModuleName = ModuleName;
+                obj.Active = Active;
+                UserBUS.User_Insert(obj);
+                return true;
+            }
+            catch
+            {
+
+            }
+            return false;
+          
         }
         [HttpPut]
         public bool User_Update(string Id, string Name, string UserName, string DateCreate, string Password, string Image, string Admin, string Role, string ModuleId, string ModuleName, string Active)
