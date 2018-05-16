@@ -36,7 +36,7 @@ namespace MyCms.Data
             return GetData(GetCommand(sql));
         }
 
-        public DataTable GetData(SqlCommand cmd)
+        public static DataTable GetData(SqlCommand cmd)
         {
             /*  - truyền vào đối tượng sqlcommand trả về dl database
                 - Dùng SqlDataAdapter thực hiện lệnh sqlcommand, điền vào dataset, trả về dữ liệu Tables

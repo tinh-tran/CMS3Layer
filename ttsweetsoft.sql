@@ -1,7 +1,7 @@
-CREATE DATABASE sweetsoft
+CREATE DATABASE CMSTT
 
 go
-use sweetsoft
+use CMSTT
 --- Tạo bảng user---- 
 go
 
@@ -20,7 +20,7 @@ CREATE TABLE Users(
 )
 GO 
 -- giao diện của chương trình ví dụ slider... ---
-CREATE TABLE ImageType(
+CREATE TABLE ImagesType(
 	Id int IDENTITY(1,1) PRIMARY KEY,
 	Name nvarchar(50),
 	Code varchar(50),
@@ -112,32 +112,26 @@ CREATE TABLE Mod(
 )
 GO
 --- Img Type----
-
-create proc sp_ImgType_GetById
-	@Id		int
-AS
-	SELECT * FROM [ImgType] WHERE Id = @Id
-GO
 CREATE PROCEDURE sp_ImgType_GetById
 	@Id		int
 AS
-	SELECT * FROM ImageType WHERE Id = @Id
+	SELECT * FROM ImgType WHERE Id = @Id
 
 GO
 CREATE PROCEDURE sp_ImgType_GetByAll
 AS
-	SELECT * FROM ImageType
+	SELECT * FROM ImgType
 GO
-CREATE PROCEDURE sp_ImgType_GetByTop
+CREATE PROCEDURE sp_ImageType_GetByTop
 @Top	nvarchar(10),
 @Where	nvarchar(200),
 @Order	nvarchar(200)
 AS
 	Declare @SQL as nvarchar(500)
-	Select @SQL = 'SELECT top (' + @Top + ') * FROM ImageType'
+	Select @SQL = 'SELECT top (' + @Top + ') * FROM ImgType'
 	if len(@Top) = 0 
 		BEGIN
-			Select @SQL = 'SELECT * FROM ImageType'
+			Select @SQL = 'SELECT * FROM ImgType'
 		END
 	if len(@Where) >0 
 		BEGIN
@@ -148,27 +142,7 @@ AS
 			Select @SQL = @SQL + ' Order by ' + @Order
 		END
 	EXEC (@SQL)
-GO
-create proc sp_ImgType_Insert
-	@Name nvarchar(50),
-	@Code varchar(50),
-	@Active tinyint
-AS
-	Insert Into ImageType (Name,Code,Active) VALUES (@Name,@Code,@Active)
-GO
-create proc sp_ImgType_Update
-	@Id 	int,
-	@Name nvarchar(50),
-	@Code varchar(50),
-	@Active tinyint
-AS
-	Update ImageType SET Name = @Name , Code = @Code , Active = @Active Where Id=@Id
-GO
-create proc sp_ImgType_Delete
-	@Id 	int
-AS
-	Delete ImageType Where Id=@Id
-GO
+
 --- ImagesDetail ---
 CREATE PROC sp_ImagesDetail_GetById
 	@Id int 
@@ -206,10 +180,10 @@ CREATE PROC sp_ImagesDetail_Insert
 	@Summary ntext
 AS
 	INSERT INTO ImagesDetail(Name, Image, ImagesId, Active, Summary)
-	VALUES(@Name, @Image, @ImagesId, @Active, @Summary)
+	VALUES(@Name, @Username, @Password, @Admin, @Active, @Image, @DateCreate, @Role, @ModuleId, @ModuleName)
 GO
 
-create PROCEDURE sp_ImagesDetail_Update
+ALTER PROCEDURE sp_ImagesDetail_Update
 	@Id		int,
 	@Name		nvarchar(512),
 	@Image		ntext,
@@ -220,12 +194,14 @@ AS
 	UPDATE ImagesDetail SET Name = @Name, Image = @Image, ImagesId = @ImagesId, Active = @Active , Summary = @Summary
 	 WHERE Id = @Id
 
-GO
+
+
+
 CREATE PROC sp_ImagesDetail_Delete
 	@Id int 
 as 
 delete from ImagesDetail where Id= @Id
-GO
+
 CREATE PROCEDURE sp_ImagesDetail_GetByTop
 @Top	nvarchar(10),
 @Where	nvarchar(200),
@@ -279,12 +255,12 @@ begin
 	UPDATE Users SET Name = @Name, Username = @Username, Password = @Password, Admin = @Admin, Active = @Active, Image = @Image, DateCreate = @DateCreate, Role = @Role, ModuleId = @ModuleId, ModuleName = @ModuleName
 	 WHERE Id = @Id
 END
-GO
+
 CREATE PROC sp_User_Delete
 	@Id int
 AS
 begin 
-DELETE FROM Users WHERE ID= @ID
+DELETE * FROM Users WHERE ID= @ID
 END 
 
 GO
@@ -295,6 +271,7 @@ AS
 BEGIN 
 UPDATE Users SET Password = @Password WHERE Id= @Id
 END
+<<<<<<< HEAD
 GO
 create proc sp_User_Update
 	@Id		int,
@@ -312,6 +289,8 @@ AS
 	UPDATE [Users] SET [Name] = @Name, [Username] = @Username, [Password] = @Password, [Admin] = @Admin, [Active] = @Active, [Image] = @Image, [DateCreate] = @DateCreate, [Role] = @Role, [ModuleId] = @ModuleId, [ModuleName] = @ModuleName
 	 WHERE Id = @Id
 GO
+=======
+>>>>>>> a4c85a242a66a740c50863dd3e2b82d39fcafe03
 
 --- Module --- 
 Create proc sp_Module_GetByAll
@@ -624,101 +603,80 @@ AS
 			Select @SQL = @SQL + ' Order by ' + @Order
 		END
 	EXEC (@SQL)
-create proc sp_Advertise_GetByTop
-@Top	nvarchar(10),
-@Where	nvarchar(200),
-@Order	nvarchar(200)
+
+---------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------
+------------------------Tạo bảng danh mục----------------------------------------------------------------------------
+
+CREATE TABLE DanhMuc(
+	[MaDM] [int] IDENTITY(1,1) NOT NULL,
+	[TenDM] [nvarchar](50) NOT NULL,
+	[ThuTu] [int] NOT NULL,
+	[MaDMCha] [int] NOT NULL,
+	[HienThi] [bit] NULL,
+ CONSTRAINT [PK__DanhMuc__2725866E3EFCF9D3] PRIMARY KEY CLUSTERED 
+(
+	[MaDM] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+-------------------------------Thêm danh mục--------------------------------------------------------------------------
+create proc sp_DanhMuc_Insert
+@TenDM nvarchar(50),
+@ThuTu int,
+@MaDMCha int,
+@HienThi bit,
+@ret int out
 AS
-	Declare @SQL as nvarchar(500)
-	Select @SQL = 'SELECT top (' + @Top + ') * FROM Advertise'
-	if len(@Top) = 0 
-		BEGIN
-			Select @SQL = 'SELECT * FROM Advertise'
-		END
-	if len(@Where) >0 
-		BEGIN
-			Select @SQL = @SQL + ' Where ' + @Where
-		END
-	if len(@Order) >0
-		BEGIN
-			Select @SQL = @SQL + ' Order by ' + @Order
-		END
-	EXEC (@SQL)
-GO
-create proc sp_Advertise_GetByType
-@Top	nvarchar(10),
-@Where	nvarchar(200),
-@Order	nvarchar(200)
+BEGIN
+	set @ret=1
+	if(not exists(select * from DanhMuc where @TenDM=TenDM))
+	begin
+	insert into DanhMuc(TenDM,ThuTu,MaDMCha,Hienthi) values(@TenDM,@ThuTu,@MaDMCha,@HienThi)
+	set @ret=2
+	end
+END
+---------------Cập nhật danh mục-------------------------------------------------------------
+create proc sp_DanhMuc_Update
+@MaDM int,
+@TenDM nvarchar(50),
+@ThuTu int,
+@MaDMCha int,
+@HienThi bit
 AS
-	Declare @SQL as nvarchar(500)
-	Select @SQL = 'SELECT top (' + @Top + ') * FROM Advertise select * from Advertise join ImgType on Advertise.Position=ImgType.Id'
-	if len(@Top) = 0 
-		BEGIN
-			Select @SQL = 'SELECT * FROM Advertise select * from Advertise join ImgType on Advertise.Position=ImgType.Id'
-		END
-	if len(@Where) >0 
-		BEGIN
-			Select @SQL = @SQL + ' Where ' + @Where
-		END
-	if len(@Order) >0
-		BEGIN
-			Select @SQL = @SQL + ' Order by ' + @Order
-		END
-	EXEC (@SQL)
-GO
-create proc sp_Advertise_Insert
-	@Name		nvarchar(150),
-	@Image		varchar(255),
-	@ImageSmall		varchar(255),
-	@Summary		nvarchar(500),
-	@Width		smallint,
-	@Height		smallint,
-	@Link		varchar(255),
-	@Target		varchar(10),
-	@ContentDetail		ntext,
-	@Position		smallint,
-	@PageId		int,
-	@Click		int,
-	@Ord		smallint,
-	@Active		tinyint,
-	@Lang		varchar(5)
+BEGIN
+	update DanhMuc set TenDM=@TenDM,ThuTu=@ThuTu,MaDMCha=@MaDMCha, HienThi=@HienThi where MaDM=@MaDM
+END
+---------------Xóa danh mục------------------------------------------------------------------
+create proc sp_DanhMuc_Delete
+@MaDM int
 AS
-	INSERT INTO Advertise(Name, Image, ImageSmall,Summary, Width, Height, Link, Target, ContentDetail, Position, PageId, Click, Ord, Active, Lang)
-	VALUES(@Name, @Image, @ImageSmall,@Summary, @Width, @Height, @Link, @Target, @ContentDetail, @Position, @PageId, @Click, @Ord, @Active, @Lang)
-GO
-create proc sp_Advertise_Update
-	@Id 		int,
-	@Name		nvarchar(150),
-	@Image		varchar(255),
-	@ImageSmall		varchar(255),
-	@Summary		nvarchar(500),
-	@Width		smallint,
-	@Height		smallint,
-	@Link		varchar(255),
-	@Target		varchar(10),
-	@ContentDetail		ntext,
-	@Position		smallint,
-	@PageId		int,
-	@Click		int,
-	@Ord		smallint,
-	@Active		tinyint,
-	@Lang		varchar(5)
+BEGIN
+DECLARE @tam int
+	set @tam=(select MaDM from DanhMuc where MaDMCha=@MaDM)
+	delete from DanhMuc where MaDM=@tam
+	delete from DanhMuc where MaDM=@MaDM
+END
+---------------Thông tin danh mục sắp xếp theo thứ tự----------------------------------------
+create proc sp_ThongtinDM
 AS
-	Update SET Adverties 	Name =@Name, 
-							Image =@Image, 
-							ImageSmall =@ImageSmall,
-							Summary =@Summary, 
-							Width =@Width, 
-							Height =@Height, 
-							Link =@Link, 
-							Target =@Target, 
-							ContentDetail =@ContentDetail, 
-							Position =@Position, 
-							PageId =@PageId, 
-							Click =@Click, 
-							Ord =@Ord, 
-							Active =@Active, 
-							Lang =@Lang
-			Where Id=@Id 
-GO
-						
+BEGIN
+	select * from DanhMuc order by ThuTu
+END
+
+----------------Thông tin danh mục cha-------------------------------------------------------
+create proc sp_ThongtinDMCha
+@MaDMCha int
+AS
+BEGIN
+	select * from DanhMuc where MaDMCha=@MaDMCha
+END
+
+---------------Thông tin danh mục theo mã danh mục-------------------------------------------
+create proc sp_ThongtinDMMaDM
+@MaDM int
+AS
+BEGIN
+	select * from DanhMuc where MaDM=@MaDM
+END

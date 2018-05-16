@@ -135,11 +135,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admins\Advertise.aspx" />
+    <Content Include="Admins\BaiViet\Ajax\AjDanhMuc.aspx" />
+    <Content Include="Admins\BaiViet\DanhMucSua.aspx" />
+    <Content Include="Admins\BaiViet\QLDanhMuc.aspx" />
     <Content Include="Admins\Icon.aspx" />
     <Content Include="Admins\ImagesDetail.aspx" />
     <Content Include="Admins\ImagesList.aspx" />
-    <Content Include="Admins\ImgType.aspx" />
     <Content Include="Admins\Mod.aspx" />
     <Content Include="Admins\Modtype.aspx" />
     <Content Include="Admins\Module.aspx" />
@@ -213,10 +214,13 @@
     <Content Include="Css\bootstrap-theme.min.css" />
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\bootstrap.min.js" />
+    <Content Include="Css\edit.png" />
     <Content Include="Css\fixhtml5shiv.js" />
     <Content Include="Css\fixrespond.min.js" />
     <Content Include="Css\font-awesome.css" />
     <Content Include="Css\style.css" />
+    <Content Include="Css\trash.png" />
+    <Content Include="Css\view.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -866,12 +870,26 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admins\Advertise.aspx.cs">
-      <DependentUpon>Advertise.aspx</DependentUpon>
+    <Compile Include="Admins\BaiViet\Ajax\AjDanhMuc.aspx.cs">
+      <DependentUpon>AjDanhMuc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admins\Advertise.aspx.designer.cs">
-      <DependentUpon>Advertise.aspx</DependentUpon>
+    <Compile Include="Admins\BaiViet\Ajax\AjDanhMuc.aspx.designer.cs">
+      <DependentUpon>AjDanhMuc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\BaiViet\DanhMucSua.aspx.cs">
+      <DependentUpon>DanhMucSua.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\BaiViet\DanhMucSua.aspx.designer.cs">
+      <DependentUpon>DanhMucSua.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\BaiViet\QLDanhMuc.aspx.cs">
+      <DependentUpon>QLDanhMuc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\BaiViet\QLDanhMuc.aspx.designer.cs">
+      <DependentUpon>QLDanhMuc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admins\Icon.aspx.cs">
       <DependentUpon>Icon.aspx</DependentUpon>
@@ -893,13 +911,6 @@
     </Compile>
     <Compile Include="Admins\ImagesList.aspx.designer.cs">
       <DependentUpon>ImagesList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admins\ImgType.aspx.cs">
-      <DependentUpon>ImgType.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admins\ImgType.aspx.designer.cs">
-      <DependentUpon>ImgType.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admins\Mod.aspx.cs">
       <DependentUpon>Mod.aspx</DependentUpon>

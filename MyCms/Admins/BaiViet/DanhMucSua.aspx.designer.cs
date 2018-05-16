@@ -7,72 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyCms {
+namespace MyCms.Admins.BaiViet {
     
     
-    public partial class SiteMaster {
+    public partial class DanhMucSua {
         
         /// <summary>
-        /// HeadContent control.
+        /// txtMaDM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.TextBox txtMaDM;
         
         /// <summary>
-        /// form1 control.
+        /// ddlDmCha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDmCha;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// txtTenDanhMuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.TextBox txtTenDanhMuc;
         
         /// <summary>
-        /// admTop1 control.
+        /// txtThuTu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MyCms.Controls.admTop admTop1;
+        protected global::System.Web.UI.WebControls.TextBox txtThuTu;
         
         /// <summary>
-        /// ltrmenuadmin control.
+        /// cbHienThi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltrmenuadmin;
+        protected global::System.Web.UI.WebControls.CheckBox cbHienThi;
         
         /// <summary>
-        /// MainContent control.
+        /// btnSua control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Button btnSua;
         
         /// <summary>
-        /// main control.
+        /// btnHuy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder main;
+        protected global::System.Web.UI.WebControls.Button btnHuy;
     }
 }

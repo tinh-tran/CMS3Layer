@@ -6,3 +6,11 @@ E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\bin\Microsoft.CodeDom.Providers.DotNetCompil
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\obj\Debug\Sweetsoft.Data.csproj.CoreCompileInputs.cache
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\obj\Debug\MyCms.Data.dll
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\obj\Debug\MyCms.Data.pdb
+D:\Bitbucket\MyCms.Data\bin\MyCms.Data.dll.config
+D:\Bitbucket\MyCms.Data\bin\MyCms.Data.dll
+D:\Bitbucket\MyCms.Data\bin\MyCms.Data.pdb
+D:\Bitbucket\MyCms.Data\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Bitbucket\MyCms.Data\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Bitbucket\MyCms.Data\obj\Debug\Sweetsoft.Data.csprojResolveAssemblyReference.cache
+D:\Bitbucket\MyCms.Data\obj\Debug\MyCms.Data.dll
+D:\Bitbucket\MyCms.Data\obj\Debug\MyCms.Data.pdb
