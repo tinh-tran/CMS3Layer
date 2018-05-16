@@ -20,6 +20,7 @@ namespace MyCms.Admins
         SqlDataProvider sql = new SqlDataProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Lang = Request.Cookies["Lang"].Value;
             if (!IsPostBack)
             {
                 Loaddinhdang();

