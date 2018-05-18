@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MyCms.Data;
 using MyCms.Bus;
+using MyCms.Common;
 
 namespace MyCms
 {
@@ -13,9 +14,15 @@ namespace MyCms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(String.IsNullOrEmpty(Request.Cookies["Lang"].Value))
+            {
+                HttpCookie cookie_Lang = new HttpCookie("Lang", Global.LangDefault);
+                cookie_Lang.Expires = DateTime.Now.AddHours(4);
+                Response.Cookies.Add(cookie_Lang);
+            }
             if (Request.Cookies["IdUser"] == null)
             {
-                Response.Redirect("/login");
+                Response.Redirect("/logon");
             }
             if (!IsPostBack)
             {
@@ -29,7 +36,7 @@ namespace MyCms
             if (Request.Cookies["Admin"].Value == "1")
             {
                 string s = "";
-                List<Data.Module> list = ModuleBUS  .Module_GetByTop("", "Idcha=0 and Active=1", "Ord asc");
+                List<Data.Module> list = ModuleBUS.Module_GetByTop("", "Idcha=0 and Active=1", "Ord asc");
                 if (list.Count > 0)
                 {
                     for (int i = 0; i < list.Count; i++)

@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" %>
 <%@ Register Src="/MyCms/Controls/admTop.ascx" TagName="admTop" TagPrefix="uc1" %>
+=======
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MyCms.SiteMaster"%>
+>>>>>>> 26c632735460c7fa2c131c740d7514e1dbceda7f
 
+<%@ Register Src="Controls/admTop.ascx" TagName="admTop" TagPrefix="uc1" %>
 <!DOCTYPE html>
-
 <html lang="en">
 <head class="Head1" runat="server">
      <title>Hệ thống Quản trị Website</title>        

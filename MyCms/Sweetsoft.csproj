@@ -135,9 +135,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admins\Advertise.aspx" />
+    <Content Include="Admins\Default.aspx" />
     <Content Include="Admins\Icon.aspx" />
     <Content Include="Admins\ImagesDetail.aspx" />
     <Content Include="Admins\ImagesList.aspx" />
+    <Content Include="Admins\ImgType.aspx" />
+    <Content Include="Admins\Mod.aspx" />
+    <Content Include="Admins\Modtype.aspx" />
     <Content Include="Admins\Module.aspx" />
     <Content Include="Admins\UpdatePass.aspx" />
     <Content Include="Admins\Users.aspx" />
@@ -235,6 +240,8 @@
     <Content Include="App_Themes\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Css\fontawesome-webfont.woff" />
     <Content Include="Css\fontawesome-webfont.woff2" />
+    <Content Include="Modules\Pages\404.aspx" />
+    <Content Include="Modules\Pages\Error.aspx" />
     <Content Include="Modules\Pages\Logout.aspx" />
     <Content Include="Scripts\ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="Scripts\ckeditor\plugins\scayt\README.md" />
@@ -243,6 +250,7 @@
     <Content Include="Scripts\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Scripts\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="Master\FullWidth.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Jquerry\colorbox\colorbox.css" />
     <Content Include="Jquerry\colorbox\images\controls.png" />
@@ -859,6 +867,20 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admins\Advertise.aspx.cs">
+      <DependentUpon>Advertise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Advertise.aspx.designer.cs">
+      <DependentUpon>Advertise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admins\Icon.aspx.cs">
       <DependentUpon>Icon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -879,6 +901,27 @@
     </Compile>
     <Compile Include="Admins\ImagesList.aspx.designer.cs">
       <DependentUpon>ImagesList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\ImgType.aspx.cs">
+      <DependentUpon>ImgType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\ImgType.aspx.designer.cs">
+      <DependentUpon>ImgType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\Mod.aspx.cs">
+      <DependentUpon>Mod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Mod.aspx.designer.cs">
+      <DependentUpon>Mod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admins\Modtype.aspx.cs">
+      <DependentUpon>Modtype.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\Modtype.aspx.designer.cs">
+      <DependentUpon>Modtype.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admins\Module.aspx.cs">
       <DependentUpon>Module.aspx</DependentUpon>
@@ -912,6 +955,27 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Master\FullWidth.Master.cs">
+      <DependentUpon>FullWidth.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\FullWidth.Master.designer.cs">
+      <DependentUpon>FullWidth.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Pages\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Pages\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Pages\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Pages\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

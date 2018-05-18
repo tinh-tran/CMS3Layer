@@ -41,7 +41,9 @@
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
-                      <li><asp:LinkButton ID="lbtVi" runat="server"> <i class="fa fa-flag fa-fw"></i>    Tiếng Việt</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="lbtVi" runat="server" OnClick="lbtVi_Click"> <i class="fa fa-flag fa-fw"></i>    Tiếng Việt</asp:LinkButton></li>
+                      <li><asp:LinkButton ID="lbtEn" runat="server" OnClick="lbtEn_Click"> <i class="fa fa-flag fa-fw"></i>   Tiếng Anh </asp:LinkButton></li>
+                      <li><asp:LinkButton ID="lbtCn" runat="server" OnClick="lbtCn_Click"> <i class="fa fa-flag fa-fw"></i>   Tiếng Trung </asp:LinkButton></li>
                     </ul>
                   </li>
                   
@@ -59,7 +61,7 @@
                   <li class="user-header">
                   <img src="/App_Themes/Admin/images/user.png" class="img-circle" alt="User Image" />
                     <p>                     
-                      <small><a href='/Admins/User.aspx' style="color:#fff">Thay đổi thông tin tài khoản</a></small>
+                     <small><a href='/Admins/Users.aspx' style="color:#fff">Thay đổi thông tin tài khoản</a></small>
                     </p>
                   </li>
                 

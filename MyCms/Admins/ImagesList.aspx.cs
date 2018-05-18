@@ -15,7 +15,7 @@ namespace MyCms.Admins
     public partial class ImagesList : System.Web.UI.Page
     {
         static string Id = "";
-        static string anh = "";
+       // static string anh = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
