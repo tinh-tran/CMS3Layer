@@ -709,7 +709,7 @@ create proc sp_Advertise_Update
 	@Active		tinyint,
 	@Lang		varchar(5)
 AS
-	Update SET Adverties 	Name =@Name, 
+	Update  Advertie  SET	Name =@Name, 
 							Image =@Image, 
 							ImageSmall =@ImageSmall,
 							Summary =@Summary, 
@@ -726,4 +726,4 @@ AS
 							Lang =@Lang
 			Where Id=@Id 
 GO
-						
+			

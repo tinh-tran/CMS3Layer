@@ -70,7 +70,7 @@ namespace MyCms.Data
             {
                 Data.Advertise obj = new Advertise();
                 dbCmd.CommandType = CommandType.StoredProcedure;
-                dbCmd.Parameters.Add(new SqlParameter("@Top", Id));
+                dbCmd.Parameters.Add(new SqlParameter("@Id", Id));
                 SqlDataReader dr = dbCmd.ExecuteReader();
                 if (dr.HasRows)
                 {

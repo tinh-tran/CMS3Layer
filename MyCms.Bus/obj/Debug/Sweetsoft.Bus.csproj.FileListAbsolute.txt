@@ -10,3 +10,15 @@ E:\TTSWEETSOFT\CMS\MyCms\MyCms.Bus\obj\Debug\Sweetsoft.Bus.csprojResolveAssembly
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Bus\obj\Debug\Sweetsoft.Bus.csproj.CoreCompileInputs.cache
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Bus\obj\Debug\MyCms.Bus.dll
 E:\TTSWEETSOFT\CMS\MyCms\MyCms.Bus\obj\Debug\MyCms.Bus.pdb
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\MyCms.Bus.dll.config
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\MyCms.Bus.dll
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\MyCms.Bus.pdb
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\MyCms.Data.dll
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\MyCms.Data.pdb
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\MyCms.Data.dll.config
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\obj\Debug\Sweetsoft.Bus.csprojResolveAssemblyReference.cache
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\obj\Debug\Sweetsoft.Bus.csproj.CoreCompileInputs.cache
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\obj\Debug\MyCms.Bus.dll
+E:\TTSWEETSOFT\MyCms\MyCms.Bus\obj\Debug\MyCms.Bus.pdb

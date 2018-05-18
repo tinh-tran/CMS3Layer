@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="/MyCms/Site.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="MyCms.Admins.Users" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="MyCms.Admins.Users" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -169,7 +169,7 @@
 
                                      <br />
                                     <input
-                                        id="btnImgImage" type="button" onclick="BrowseServer('<% =txtImage.ClientID %>','News')"
+                                        id="btnImgImage" type="button" onclick="BrowseServer('<% =txtImage.ClientID %>','News');"
                                         class='btn btn-default' value=" Chọn Tệp tin " /><br />
                                     <asp:Image ID="imgImage" runat="server" ImageAlign="Middle" CssClass="image-1" Style='width: 95px;
                                         height: 87px; margin-top: 10px' Visible="false" />
