@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="/MyCms/Site.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="MyCms.Admins.Users" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyCms/Site.Master" AutoEventWireup="true" CodeFile="Posts.aspx.cs" Inherits="MyCms_Admins_Posts" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <section class="content-header"><h1>Quản lý tài khoản</h1></section>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+        <section class="content-header"><h1>Quản lý bài viết</h1></section>
     <section class="content"><div class="row"><div class="col-xs-12"><div class="box adm1"> 
     <asp:Panel ID="pnView" runat="server">
         <a class="btn btn-default" href="javascript:void(0);" onclick="window.history.go(-1);">
@@ -14,7 +14,7 @@
             OnClick="DeleteButton_Click"><i class="icon-trash"></i>&nbsp; Xóa</asp:LinkButton>
         <div style='clear: both; height: 10px'>
         </div>
-        <div class="row">
+           <div class="row">
             <div style='clear: both; height: 10px'>
             </div>
             <div class="col-lg-12">
@@ -23,9 +23,9 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="dataTable_wrapper">
-                            <asp:DataGrid ID="grdUser" runat="server" Width="100%" CssClass="table table-striped table-bordered table-hover"
-                                AutoGenerateColumns="False" OnItemDataBound="grdUser_ItemDataBound" OnItemCommand="grdUser_ItemCommand"
-                                OnPageIndexChanged="grdUser_PageIndexChanged">
+                            <asp:DataGrid ID="grPosts" runat="server" Width="100%" CssClass="table table-striped table-bordered table-hover"
+                                AutoGenerateColumns="False" OnItemDataBound="grPost_ItemDataBound" OnItemCommand="grPosts_ItemCommand"
+                                OnPageIndexChanged="grPosts_PageIndexChanged">
                                 <HeaderStyle CssClass="trHeader"></HeaderStyle>
                                 <ItemStyle CssClass="trOdd"></ItemStyle>
                                 <AlternatingItemStyle CssClass="trEven"></AlternatingItemStyle>
@@ -43,33 +43,69 @@
                                     <asp:BoundColumn DataField="Active" HeaderText="Active" Visible="False" />
                                     <asp:TemplateColumn >
                                         <HeaderTemplate>
-                                            Tên người dùng</HeaderTemplate>
+                                            Tên bài viết</HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Name")%>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Center" />
                                     </asp:TemplateColumn>
-                                    <asp:BoundColumn DataField="Username" HeaderText="Tên đăng nhập" 
-                                        Visible="true">
-                                        <ItemStyle CssClass="Center" />
-                                    </asp:BoundColumn>
-                                    <asp:TemplateColumn >
+                                     <asp:TemplateColumn >
                                         <HeaderTemplate>
-                                            Quyền hạn</HeaderTemplate>
+                                            Tiêu đề</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lbladmin" runat="server" Text='<%# ShowAdmin(DataBinder.Eval(Container.DataItem, "Admin").ToString())%>'></asp:Label>
+                                            <asp:Label ID="lblTieuDe" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"TieuDe")%>'></asp:Label>
                                         </ItemTemplate>
                                         <ItemStyle CssClass="Center" />
                                     </asp:TemplateColumn>
-                                    <asp:TemplateColumn ItemStyle-CssClass="TextShort">
+                                     <asp:TemplateColumn >
                                         <HeaderTemplate>
-                                            Trạng thái</HeaderTemplate>
+                                            Nội dung</HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:Label ID="lblStatus" runat="server" Text=''></asp:Label>
+                                            <asp:Label ID="lblNoiDung" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"NoiDung")%>'></asp:Label>
                                         </ItemTemplate>
-                                        <ItemStyle CssClass="Function" />
+                                        <ItemStyle CssClass="Center" />
                                     </asp:TemplateColumn>
-                                    <asp:TemplateColumn ItemStyle-CssClass="Function">
+                                        <asp:TemplateColumn ItemStyle-CssClass="Image">
+                                        <HeaderTemplate>
+                                            Hình ảnh</HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:Image ID="Imgbtn" runat="server" ImageUrl='<%#(DataBinder.Eval(Container.DataItem, "Anh").ToString()) %>' Width="95" Height="87" />
+                                        </ItemTemplate> 
+                                            <ItemStyle CssClass="Image" />
+                                    </asp:TemplateColumn>
+                                     <asp:TemplateColumn >
+                                        <HeaderTemplate>
+                                            Thứ tự</HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblThuTu" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"ThuTu")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="Center" />
+                                    </asp:TemplateColumn>
+                                     <asp:TemplateColumn >
+                                        <HeaderTemplate>
+                                            Hiển thị</HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="ckHienThi" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"HienThi")%>'></asp:CheckBox>
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="Center" />
+                                    </asp:TemplateColumn>
+                               <asp:TemplateColumn >
+                                        <HeaderTemplate>
+                                            Ngày Đăng</HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblNgayDang" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"NgayDang")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="Center" />
+                                    </asp:TemplateColumn>
+                                     <asp:TemplateColumn >
+                                        <HeaderTemplate>
+                                            Mã danh mục</HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblmaDM" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"MaDM")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <ItemStyle CssClass="Center" />
+                                    </asp:TemplateColumn>
+                                     <asp:TemplateColumn ItemStyle-CssClass="Function">
                                         <HeaderTemplate>
                                             Chức năng</HeaderTemplate>
                                         <ItemTemplate>
@@ -112,38 +148,43 @@
                             <div class="col-lg-12">
                                 <form role="form">
                                 <div class="form-group">
-                                    Tên Người dùng:
-                                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>                                    
+                                   Tên bài viết
+                                    <asp:TextBox ID="txtTenBV" runat="server" CssClass="form-control"></asp:TextBox>                                    
                                     <asp:RequiredFieldValidator                                    
-                                        ID="rfvName" runat="server" ControlToValidate="txtName" Display="None" ErrorMessage="Chưa nhập họ tên" ValidationGroup="Save"
+                                        ID="rfvTenBV" runat="server" ControlToValidate="txtTenBV" Display="None" ErrorMessage="Chưa nhập tên bài viết" ValidationGroup="Save"
                                         SetFocusOnError="True"></asp:RequiredFieldValidator>
                                 </div>
                                                                 
                                 <div class="form-group">
-                                    Tên đăng nhập:
-                                    <asp:TextBox ID="txtId" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
-                                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control"></asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ValidationGroup="Save" ControlToValidate="txtUsername" Display="None" ErrorMessage="Chưa nhập tên đăng nhập" SetFocusOnError="True"></asp:RequiredFieldValidator>                                       
+                                    Tiêu đề
+                                    <asp:TextBox ID="txtTieuDe" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvTieuDe" runat="server" ValidationGroup="Save" ControlToValidate="txtTieuDe" Display="None" ErrorMessage="Chưa nhập Tiều đề" SetFocusOnError="True"></asp:RequiredFieldValidator>                                       
                                 </div>
-
                                 <div class="form-group">
-                                    <asp:Literal ID="ltrPass" runat="server"></asp:Literal>
-                                    <asp:TextBox ID="txtPass" TextMode="Password" runat="server" CssClass="form-control" ></asp:TextBox>                                    
-                                    <asp:RequiredFieldValidator ID="frvPass" runat="server" ValidationGroup="Save" ControlToValidate="txtPass" Display="None" ErrorMessage="Chưa nhập mật khẩu" SetFocusOnError="True"></asp:RequiredFieldValidator>                                       
+                                    Nội dung
+                                    <asp:TextBox ID="txtNoiDung" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvNoiDung" runat="server" ValidationGroup="Save" ControlToValidate="txtNoiDung" Display="None" ErrorMessage="Chưa nhập Nội dung" SetFocusOnError="True"></asp:RequiredFieldValidator>                                       
+                                </div> 
+                                        <div class="form-group">
+                                    Hình ảnh
+                                    <asp:TextBox ID="txtImage" runat="server" CssClass="form-control"></asp:TextBox> 
+                                     <br />
+                                    <input
+                                        id="btnImgImage" type="button" onclick="BrowseServer('<% =txtImage.ClientID %>','News');"
+                                        class='btn btn-default' value=" Chọn Tệp tin " /><br />
+                                    <asp:Image ID="imgImage" runat="server" ImageAlign="Middle" CssClass="image-1" Style='width: 95px;
+                                        height: 87px; margin-top: 10px' Visible="false" />
+                                </div>
+                                    <div class="form-group">
+                                    Thứ tự:
+                                    <asp:TextBox ID="txtThuTu" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvThuTu" runat="server" ValidationGroup="Save" ControlToValidate="txtThuTu" Display="None" ErrorMessage="Chưa nhập thứ tự" SetFocusOnError="True"></asp:RequiredFieldValidator>                                       
                                 </div>
                   
                                 <div class="form-group">
-                                Ngày tạo:
+                                Ngày đăng
                                 <asp:TextBox ID="txtDate" CssClass="form-control" runat="server"></asp:TextBox>
-                                </div>
-                                                                     
-                                <div class="form-group">
-                                    Quyền hạn:
-                                    <asp:DropDownList runat="server" ID="ddlAdmin" CssClass="form-control">
-                                        <asp:ListItem Text="Quản trị" Value="1" />
-                                        <asp:ListItem Text="Nhân viên" Value="2" />
-                                     </asp:DropDownList>
-                                </div>                    
+                                </div>      
 
                                 <div class="form-group">
                                     Kích hoạt:
@@ -164,18 +205,9 @@
             </div>
         </div>
         <div style="display:none">
-        <div class="form-group">
-                                    Hình ảnh
-                                    <asp:TextBox ID="txtImage" runat="server" CssClass="form-control"></asp:TextBox> 
-
-                                     <br />
-                                    <input
-                                        id="btnImgImage" type="button" onclick="BrowseServer('<% =txtImage.ClientID %>','News')"
-                                        class='btn btn-default' value=" Chọn Tệp tin " /><br />
-                                    <asp:Image ID="imgImage" runat="server" ImageAlign="Middle" CssClass="image-1" Style='width: 95px;
-                                        height: 87px; margin-top: 10px' Visible="false" />
-                                </div>
+    
         </div>
     </asp:Panel>
     </div></div></div></section>
 </asp:Content>
+

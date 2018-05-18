@@ -1,5 +1,5 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MyCms.SiteMaster" %>
-<%@ Register Src="Controls/admTop.ascx" TagName="admTop" TagPrefix="uc1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" %>
+<%@ Register Src="/MyCms/Controls/admTop.ascx" TagName="admTop" TagPrefix="uc1" %>
 
 <!DOCTYPE html>
 
