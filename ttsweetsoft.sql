@@ -727,3 +727,74 @@ AS
 			Where Id=@Id 
 GO
 			
+			---------------Code tạo bảng bài viết---------------------------------------------------------
+create table BaiViet
+(
+	MaBaiViet int IDENTITY(1,1) primary key NOT NULL,
+	TenBaiViet nvarchar(100) NOT NULL,
+	NoiDung nvarchar(max) NOT NULL,
+	TieuDe nvarchar(1000) NOT NULL,
+	Anh nvarchar(max) NULL,
+	ThuTu int NOT NULL,
+	HienThi bit NULL,
+	MaDM int NULL foreign key references DanhMuc(MaDM)
+)
+
+---------------------Thêm mới bài viết----------------------------------------
+create proc sp_BaiViet_Insert
+@TenBaiViet nvarchar(100),
+@NoiDung nvarchar(Max)=null,
+@TieuDe nvarchar(1000),
+@Anh nvarchar(Max)=null,
+@ThuTu int,
+@HienThi bit,
+@MaDM int
+AS 
+BEGIN
+	if(not exists(select * from BaiViet where @TenBaiViet=TenBaiViet))
+	begin
+	insert into BaiViet(TenBaiViet,NoiDung,TieuDe,Anh,ThuTu,HienThi,MaDM) values (@TenBaiViet,@NoiDung,@TieuDe,@Anh,@ThuTu,@HienThi,@MaDM)
+	end
+END
+----------------Sửa bài viết-------------------------------------------------
+create proc sp_BaiViet_Update
+@MaBaiViet int,
+@TenBaiViet nvarchar(100),
+@NoiDung nvarchar(Max)=null,
+@TieuDe nvarchar(1000),
+@Anh nvarchar(Max)=null,
+@ThuTu int,
+@HienThi bit,
+@MaDM int
+AS
+BEGIN
+	update BaiViet 
+	set TenBaiViet=@TenBaiViet,NoiDung=@NoiDung,TieuDe=@TieuDe,Anh=@Anh,ThuTu=@ThuTu,HienThi=@HienThi,MaDM=@MaDM
+	where MaBaiViet=@MaBaiViet
+
+END
+----------------Xóa bài viết-------------------------------------------------
+create proc sp_BaiViet_Delete
+@MaBaiViet int
+AS
+BEGIN
+	delete from BaiViet where MaBaiViet=@MaBaiViet
+END
+----------------Lấy danh sách bài viết---------------------------------------
+
+create proc sp_ThongTinBaiViet
+AS
+BEGIN
+	select MaBaiViet,SUBSTRING( TenBaiViet,1,20) as TenBaiViet,SUBSTRING( TieuDe,1,20) as TieuDe, SUBSTRING( NoiDung,1,20) as NoiDung, Anh, bv.ThuTu, bv.HienThi, TenDM from BaiViet bv join DanhMuc dm on bv.MaDM=dm.MaDM order by bv.ThuTu
+END
+
+
+--------------Lấy danh sách bài viết theo mã bài viết---------------------------------
+
+create proc sp_ThongTinBaiViet_MaBV
+@MaBaiViet int
+AS
+BEGIN
+	select * from BaiViet 
+	where MaBaiViet=@MaBaiViet
+END
