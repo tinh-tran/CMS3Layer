@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="MyCms.Admins.Users" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="MyCms.Admins.Users" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -166,7 +166,6 @@
         <div class="form-group">
                                     Hình ảnh
                                     <asp:TextBox ID="txtImage" runat="server" CssClass="form-control"></asp:TextBox> 
-
                                      <br />
                                     <input
                                         id="btnImgImage" type="button" onclick="BrowseServer('<% =txtImage.ClientID %>','News');"

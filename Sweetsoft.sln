@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sweetsoft", "MyCms\Sweetsoft.csproj", "{AEC4698C-E147-4DD9-9F02-B4F6B967CCA3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6F46AA37-A3E8-424B-B6DF-23437E480403} = {6F46AA37-A3E8-424B-B6DF-23437E480403}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sweetsoft.Data", "MyCms.Data\Sweetsoft.Data.csproj", "{54217501-D79E-4DDB-9B78-FCD29EF54396}"
 EndProject

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Modtype.aspx.cs" Inherits="MyCms.Admins.Modtype" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Modtype.aspx.cs" Inherits="MyCms.Admins.Modtype" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
      .table-bordered>tbody>tr.trOdd>td , .table-bordered>tbody>tr.trEven>td {text-align:left}

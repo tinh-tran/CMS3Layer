@@ -8,10 +8,11 @@
 //------------------------------------------------------------------------------
 
 namespace MyCms.Admins {
-    
-    
-    public partial class UpdatePass {
-        
+
+
+    public partial class UpdatePass
+    {
+
         /// <summary>
         /// txtPassOld control.
         /// </summary>
@@ -20,7 +21,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassOld;
-        
+
         /// <summary>
         /// rfv1 control.
         /// </summary>
@@ -29,7 +30,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv1;
-        
+
         /// <summary>
         /// txtId control.
         /// </summary>
@@ -38,7 +39,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtId;
-        
+
         /// <summary>
         /// txtPassNew control.
         /// </summary>
@@ -47,7 +48,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassNew;
-        
+
         /// <summary>
         /// rfv2 control.
         /// </summary>
@@ -56,7 +57,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv2;
-        
+
         /// <summary>
         /// RegExp1 control.
         /// </summary>
@@ -65,7 +66,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExp1;
-        
+
         /// <summary>
         /// txtRePass control.
         /// </summary>
@@ -74,7 +75,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRePass;
-        
+
         /// <summary>
         /// rfv3 control.
         /// </summary>
@@ -83,7 +84,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv3;
-        
+
         /// <summary>
         /// cpv1 control.
         /// </summary>
@@ -92,7 +93,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator cpv1;
-        
+
         /// <summary>
         /// ValSummary control.
         /// </summary>
@@ -101,7 +102,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary ValSummary;
-        
+
         /// <summary>
         /// lbtUpdateT control.
         /// </summary>
@@ -110,7 +111,7 @@ namespace MyCms.Admins {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtUpdateT;
-        
+
         /// <summary>
         /// lbtReset control.
         /// </summary>

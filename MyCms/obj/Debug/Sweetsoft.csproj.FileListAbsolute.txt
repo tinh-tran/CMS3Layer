@@ -92,3 +92,4 @@ E:\TTSWEETSOFT\MyCms\MyCms\obj\Debug\Sweetsoft.csprojResolveAssemblyReference.ca
 E:\TTSWEETSOFT\MyCms\MyCms\obj\Debug\Sweetsoft.csproj.CoreCompileInputs.cache
 E:\TTSWEETSOFT\MyCms\MyCms\obj\Debug\MyCms.dll
 E:\TTSWEETSOFT\MyCms\MyCms\obj\Debug\MyCms.pdb
+E:\TTSWEETSOFT\CMS\MyCms\MyCms\bin\AjaxControlToolkit.dll

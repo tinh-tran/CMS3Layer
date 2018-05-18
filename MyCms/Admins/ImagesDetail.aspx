@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master"  AutoEventWireup="true" CodeBehind="ImagesDetail.aspx.cs" Inherits="MyCms.Admins.ImagesDetail" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/AdminMaster.Master"  AutoEventWireup="true" CodeBehind="ImagesDetail.aspx.cs" Inherits="MyCms.Admins.ImagesDetail" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
