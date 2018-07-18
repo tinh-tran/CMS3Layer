@@ -15,3 +15,4 @@ E:\TTSWEETSOFT\MyCms\MyCms.Data\obj\Debug\Sweetsoft.Data.csprojResolveAssemblyRe
 E:\TTSWEETSOFT\MyCms\MyCms.Data\obj\Debug\Sweetsoft.Data.csproj.CoreCompileInputs.cache
 E:\TTSWEETSOFT\MyCms\MyCms.Data\obj\Debug\MyCms.Data.dll
 E:\TTSWEETSOFT\MyCms\MyCms.Data\obj\Debug\MyCms.Data.pdb
+E:\TTSWEETSOFT\CMS\MyCms\MyCms.Data\obj\Debug\Sweetsoft.Data.csprojResolveAssemblyReference.cache

@@ -629,6 +629,7 @@ AS
 		END
 	EXEC (@SQL)
 GO
+
 create proc sp_Advertise_GetByTop
 @Top	nvarchar(10),
 @Where	nvarchar(200),

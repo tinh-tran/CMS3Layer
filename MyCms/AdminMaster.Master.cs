@@ -22,7 +22,7 @@ namespace MyCms
             }
             if (Request.Cookies["IdUser"] == null)
             {
-                Response.Redirect("/logon");
+                Response.Redirect("/login");
             }
             if (!IsPostBack)
             {
